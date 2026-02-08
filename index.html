@@ -1,0 +1,1451 @@
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Timix - программирование на Python и HTML, обучающие видео.">
+<meta name="keywords" content="python, html, программирование, Timix">
+<title>Timix</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+:root {
+--primary: #6c5ce7;
+--secondary: #00cec9;
+--dark: #2d3436;
+--light: #f7f9fc;
+--accent: #fd79a8;
+--gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: var(--light);
+color: var(--dark);
+overflow-x: hidden;
+line-height: 1.6;
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Header & Hero */
+header {
+background: var(--gradient);
+color: white;
+padding: 20px 0;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+}
+header.scrolled {
+background: var(--gradient) !important;
+padding: 15px 0;
+}
+nav {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+}
+.logo {
+font-size: 28px;
+font-weight: bold;
+display: flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+}
+.logo i {
+font-size: 32px;
+}
+.nav-links {
+display: flex;
+gap: 30px;
+}
+.nav-links a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+font-size: 16px;
+transition: all 0.3s ease;
+position: relative;
+padding: 5px 0;
+}
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: white;
+transition: width 0.3s ease;
+}
+.nav-links a:hover::after {
+width: 100%;
+}
+/* Main Content */
+.main-content {
+display: none;
+opacity: 0;
+transition: opacity 0.5s ease;
+}
+.main-content.active {
+display: block;
+opacity: 1;
+}
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 0 20px;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+z-index: 0;
+}
+.hero-content {
+max-width: 800px;
+z-index: 1;
+padding-top: 80px;
+}
+.hero h1 {
+font-size: 4.5rem;
+margin-bottom: 20px;
+background: var(--gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+animation: fadeInUp 1s ease;
+}
+.hero p {
+font-size: 1.5rem;
+margin-bottom: 40px;
+color: #555;
+animation: fadeInUp 1s ease 0.2s forwards;
+opacity: 0;
+}
+.typing {
+font-size: 1.8rem;
+margin: 20px 0;
+color: var(--primary);
+font-weight: bold;
+animation: fadeInUp 1s ease 0.4s forwards;
+opacity: 0;
+}
+.typing span {
+border-right: 3px solid var(--primary);
+white-space: nowrap;
+overflow: hidden;
+animation: typing 3s steps(30, end) 1s infinite alternate, blink 0.7s step-end infinite;
+}
+@keyframes typing {
+0%,
+10% {
+width: 0;
+}
+30%,
+40% {
+width: 150px;
+}
+60%,
+70% {
+width: 300px;
+}
+90%,
+100% {
+width: 450px;
+}
+}
+@keyframes blink {
+50% {
+border-color: transparent;
+}
+}
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+/* About Section */
+.section {
+padding: 100px 20px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.section-title {
+text-align: center;
+margin-bottom: 60px;
+position: relative;
+}
+.section-title h2 {
+font-size: 2.5rem;
+color: var(--primary);
+display: inline-block;
+padding-bottom: 10px;
+}
+.section-title h2::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 80px;
+height: 4px;
+background: var(--secondary);
+border-radius: 2px;
+}
+/* FAQ Section */
+.faq-container {
+max-width: 800px;
+margin: 0 auto;
+}
+.faq-item {
+background: white;
+border-radius: 12px;
+padding: 25px;
+margin-bottom: 20px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+transition: all 0.3s ease;
+border-left: 4px solid var(--primary);
+}
+.faq-item:hover {
+transform: translateX(10px);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.faq-question {
+font-size: 1.2rem;
+font-weight: 600;
+color: var(--primary);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.faq-question i {
+font-size: 1.1rem;
+}
+.faq-answer {
+color: #666;
+line-height: 1.8;
+}
+/* Projects Section */
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 40px;
+margin-top: 40px;
+}
+.project-card {
+background: white;
+padding: 40px 30px;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+text-align: center;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+cursor: pointer;
+transform: translateY(0);
+transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+box-shadow 0.3s ease;
+}
+.project-card:hover {
+transform: translateY(-20px) scale(1.05);
+box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+.project-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: var(--gradient);
+transition: transform 0.3s ease;
+}
+.project-card:hover::before {
+transform: scaleX(1.1);
+}
+.project-card i {
+font-size: 4rem;
+margin-bottom: 20px;
+background: var(--gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+transition: transform 0.3s ease;
+}
+.project-card:hover i {
+transform: scale(1.2) rotate(5deg);
+}
+.project-card h3 {
+font-size: 1.8rem;
+margin-bottom: 15px;
+color: var(--dark);
+transition: color 0.3s ease;
+}
+.project-card p {
+color: #666;
+font-size: 1.1rem;
+transition: color 0.3s ease;
+}
+.project-card:hover h3,
+.project-card:hover p {
+color: var(--primary);
+}
+/* Download Page Styles */
+.download-page {
+padding: 80px 20px;
+max-width: 1000px;
+margin: 0 auto;
+}
+.download-header {
+text-align: center;
+margin-bottom: 60px;
+}
+.download-header h1 {
+font-size: 3rem;
+color: var(--primary);
+margin-bottom: 20px;
+}
+.download-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+gap: 40px;
+margin-bottom: 60px;
+}
+.download-card {
+background: white;
+border-radius: 15px;
+padding: 40px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+.download-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: var(--gradient);
+}
+.download-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+.download-card h2 {
+font-size: 1.8rem;
+margin-bottom: 20px;
+color: var(--dark);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.windows-logo {
+display: inline-block;
+width: 32px;
+height: 32px;
+position: relative;
+animation: pulse 2s infinite;
+}
+.windows-logo::before,
+.windows-logo::after {
+content: '';
+position: absolute;
+background: var(--primary);
+border-radius: 2px;
+}
+.windows-logo::before {
+width: 12px;
+height: 12px;
+top: 0;
+left: 0;
+animation: windowsMove 2s infinite;
+}
+.windows-logo::after {
+width: 12px;
+height: 12px;
+bottom: 0;
+right: 0;
+animation: windowsMove 2s infinite 1s;
+}
+@keyframes windowsMove {
+0%,
+100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.2);
+}
+}
+@keyframes pulse {
+0%,
+100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.05);
+}
+}
+.download-card p {
+margin-bottom: 20px;
+color: #666;
+line-height: 1.8;
+}
+.download-link {
+display: inline-block;
+background: var(--gradient);
+color: white;
+padding: 15px 40px;
+border-radius: 10px;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.1rem;
+transition: all 0.3s ease;
+box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+.download-link:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+}
+.download-link i {
+margin-right: 10px;
+}
+.faq-section {
+background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+padding: 60px 20px;
+border-radius: 15px;
+margin-top: 40px;
+}
+.faq-section h2 {
+text-align: center;
+font-size: 2rem;
+color: var(--primary);
+margin-bottom: 40px;
+}
+.faq-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 900px;
+margin: 0 auto;
+}
+.faq-item-page {
+background: white;
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+transition: all 0.3s ease;
+}
+.faq-item-page:hover {
+transform: translateX(10px);
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.faq-item-page h3 {
+font-size: 1.3rem;
+margin-bottom: 10px;
+color: var(--dark);
+}
+.faq-item-page p {
+color: #666;
+line-height: 1.7;
+}
+/* Telegram Subscribe Button - NEW! */
+.telegram-subscribe-btn {
+background: linear-gradient(135deg, #0088cc 0%, #00bfa5 100%);
+color: white;
+padding: 25px 50px;
+border-radius: 15px;
+text-align: center;
+margin: 60px auto;
+max-width: 800px;
+cursor: pointer;
+transition: all 0.3s ease;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 15px;
+font-size: 1.3rem;
+font-weight: 600;
+}
+.telegram-subscribe-btn:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+background: linear-gradient(135deg, #00a8ff 0%, #00d4ff 100%);
+}
+.telegram-subscribe-btn i {
+font-size: 1.8rem;
+}
+/* Footer */
+footer {
+background: var(--dark);
+color: white;
+text-align: center;
+padding: 40px 20px;
+}
+.footer-content {
+max-width: 600px;
+margin: 0 auto;
+}
+.footer-content p {
+margin: 10px 0;
+color: #aaa;
+}
+.copyright {
+margin-top: 20px;
+color: #777;
+font-size: 0.9rem;
+}
+/* Scroll Progress */
+.scroll-progress {
+position: fixed;
+top: 0;
+left: 0;
+height: 4px;
+background: var(--gradient);
+width: 0;
+z-index: 9999;
+transition: width 0.1s ease;
+}
+/* Theme Toggle Button */
+.theme-toggle {
+position: fixed;
+bottom: 30px;
+right: 30px;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background: var(--gradient);
+border: none;
+color: white;
+font-size: 1.2rem;
+cursor: pointer;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+z-index: 1000;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.theme-toggle:hover {
+transform: scale(1.1) rotate(30deg);
+box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+.theme-toggle i {
+transition: transform 0.3s ease;
+}
+.theme-toggle:hover i {
+transform: rotate(360deg);
+}
+/* Color Picker Modal - FIXED VERSION */
+.color-picker-modal {
+position: fixed;
+bottom: 90px;
+right: 30px;
+background: white;
+padding: 20px;
+border-radius: 15px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+z-index: 999;
+display: none;
+/* Hidden by default */
+width: 320px;
+}
+.color-picker-modal h3 {
+margin-bottom: 15px;
+color: var(--dark);
+font-size: 1.2rem;
+text-align: center;
+}
+.color-options {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 12px;
+}
+.color-option {
+width: 60px;
+height: 60px;
+border-radius: 12px;
+cursor: pointer;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+border: 3px solid transparent;
+}
+.color-option:hover {
+transform: scale(1.15);
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.color-option.selected {
+border-color: #333;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+/* Dark Theme */
+body.dark-theme {
+--dark: #f8f9fa;
+--light: #1a1b26;
+background: #161722;
+color: #e0e0e0;
+}
+body.dark-theme header {
+background: linear-gradient(135deg, #2d2e41 0%, #1e293b 100%) !important;
+}
+body.dark-theme header.scrolled {
+background: linear-gradient(135deg, #2d2e41 0%, #1e293b 100%) !important;
+}
+body.dark-theme .faq-item,
+body.dark-theme .project-card,
+body.dark-theme .download-card,
+body.dark-theme .faq-item-page {
+background: #252636;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+color: #e0e0e0;
+}
+body.dark-theme .faq-answer,
+body.dark-theme .project-card p,
+body.dark-theme .download-card p,
+body.dark-theme .faq-item-page p {
+color: #aaa;
+}
+body.dark-theme footer {
+background: #1e1f29;
+}
+body.dark-theme .section-title h2 {
+color: #a78bfa;
+}
+body.dark-theme .faq-section {
+background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+body.dark-theme .color-picker-modal {
+background: #252636;
+color: #e0e0e0;
+}
+body.dark-theme .telegram-subscribe-btn {
+background: linear-gradient(135deg, #006699 0%, #0088aa 100%);
+}
+body.dark-theme .telegram-subscribe-btn:hover {
+background: linear-gradient(135deg, #0088cc 0%, #00bfa5 100%);
+}
+/* Black Theme - FULL WHITE TEXT */
+body.black-theme {
+--light: #000000;
+background: #000000;
+color: white;
+}
+body.black-theme * {
+color: white !important;
+}
+body.black-theme header {
+background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
+color: white !important;
+}
+/* ИСПРАВЛЕНИЕ: Градиентный текст в черной теме */
+body.black-theme .hero h1 {
+background: linear-gradient(135deg, white 0%, #a0a0a0 100%) !important;
+-webkit-background-clip: text !important;
+-webkit-text-fill-color: transparent !important;
+background-clip: text !important;
+color: transparent !important;
+}
+body.black-theme .faq-item,
+body.black-theme .project-card,
+body.black-theme .download-card,
+body.black-theme .faq-item-page {
+background: #333333;
+color: white !important;
+border-color: #555 !important;
+}
+body.black-theme .faq-question {
+color: white !important;
+}
+body.black-theme .faq-answer,
+body.black-theme .project-card p,
+body.black-theme .download-card p,
+body.black-theme .faq-item-page p {
+color: white !important;
+}
+body.black-theme .section-title h2 {
+color: white !important;
+}
+body.black-theme .section-title h2::after {
+background: white !important;
+}
+body.black-theme footer {
+background: #111111;
+color: white !important;
+}
+body.black-theme .faq-section {
+background: #222222;
+}
+body.black-theme .color-picker-modal {
+background: #222222;
+color: white !important;
+}
+body.black-theme .telegram-subscribe-btn {
+background: linear-gradient(135deg, #005577 0%, #007799 100%);
+color: white !important;
+}
+body.black-theme .telegram-subscribe-btn:hover {
+background: linear-gradient(135deg, #0077aa 0%, #0099cc 100%);
+}
+/* Responsive */
+@media (max-width: 768px) {
+.hero h1 {
+font-size: 2.8rem;
+}
+.hero p {
+font-size: 1.2rem;
+}
+.typing {
+font-size: 1.3rem;
+}
+.nav-links {
+display: none;
+}
+.section,
+.download-page {
+padding: 60px 20px;
+}
+.section-title h2,
+.download-header h1 {
+font-size: 2rem;
+}
+.download-cards {
+grid-template-columns: 1fr;
+}
+.theme-toggle {
+bottom: 20px;
+right: 20px;
+width: 45px;
+height: 45px;
+}
+.color-picker-modal {
+bottom: 80px;
+right: 20px;
+width: 280px;
+}
+.color-options {
+gap: 10px;
+grid-template-columns: repeat(4, 1fr);
+}
+.color-option {
+width: 50px;
+height: 50px;
+}
+.telegram-subscribe-btn {
+padding: 20px 30px;
+font-size: 1.1rem;
+margin: 40px 20px;
+}
+}
+</style>
+</head>
+<body>
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<!-- Theme Toggle Button -->
+<button class="theme-toggle" id="themeToggle">
+<i class="fas fa-palette"></i>
+</button>
+<!-- Color Picker Modal - FIXED VERSION -->
+<div class="color-picker-modal" id="colorPickerModal">
+<h3>Выберите основной цвет</h3>
+<div class="color-options">
+<div class="color-option" style="background: #6c5ce7;" data-primary="#6c5ce7"></div>
+<div class="color-option" style="background: #00b894;" data-primary="#00b894"></div>
+<div class="color-option" style="background: #fd79a8;" data-primary="#fd79a8"></div>
+<div class="color-option" style="background: #e17055;" data-primary="#e17055"></div>
+<div class="color-option" style="background: #0984e3;" data-primary="#0984e3"></div>
+<div class="color-option" style="background: #fdcb6e;" data-primary="#fdcb6e"></div>
+<div class="color-option" style="background: #55efc4;" data-primary="#55efc4"></div>
+<div class="color-option" style="background: #74b9ff;" data-primary="#74b9ff"></div>
+<div class="color-option" style="background: #a29bfe;" data-primary="#a29bfe"></div>
+<div class="color-option" style="background: #ff7675;" data-primary="#ff7675"></div>
+<div class="color-option" style="background: #ffeaa7;" data-primary="#ffeaa7"></div>
+<div class="color-option" style="background: #000000;" data-primary="#000000"></div>
+</div>
+</div>
+<!-- Header -->
+<header id="header">
+<nav>
+<div class="logo" id="homeBtn">
+<i class="fas fa-code"></i>
+<span>Timix</span>
+</div>
+<div class="nav-links">
+<a href="#" id="navHome">Главная</a>
+<a href="#about">Обо мне</a>
+<a href="#projects">Проекты</a>
+</div>
+</nav>
+</header>
+<!-- Home Page -->
+<div class="main-content active" id="homePage">
+<!-- Hero Section -->
+<section class="hero">
+<div class="hero-content">
+<h1 data-aos="fade-up">Timix</h1>
+<p data-aos="fade-up" data-aos-delay="200">Блогер • Программист</p>
+<div class="typing" data-aos="fade-up" data-aos-delay="400">
+<span>👨‍💻 Python Developer</span>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="section" id="about">
+<div class="section-title" data-aos="fade-down">
+<h2>Обо мне</h2>
+</div>
+<div class="faq-container">
+<div class="faq-item" data-aos="fade-up">
+<div class="faq-question">
+<i class="fas fa-user"></i>
+Кто ты такой?
+</div>
+<div class="faq-answer">
+Я — Timix, начинающий техноблогер, течтокер. В своих видео я рассказываю про компьютеры, телефоны и другую технику. Так же я являюсь начинающим программистом. Я пока знаю языки Python и HTML, но скоро буду делать свои программы и на других языках.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+<div class="faq-question">
+<i class="fas fa-birthday-cake"></i>
+Сколько тебе лет?
+</div>
+<div class="faq-answer">
+Мне 13 лет. Начал разбираться в компьютерах в 8-9 лет, а год назад заинтересовался разработкой сборок на Windows и программированием.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+<div class="faq-question">
+<i class="fas fa-video"></i>
+Как давно ты ведёшь YouTube канал?
+</div>
+<div class="faq-answer">
+Мой канал существует уже более 3 лет. У меня больше Shorts'ев, но я больше их не выпускаю.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="700">
+<div class="faq-question">
+<i class="fas fa-tools"></i>
+Какие программы ты используешь в своей карьере?
+</div>
+<div class="faq-answer">
+Для программирования: CodePen, PyCharm, Git. Для монтажа видео я пользуюсь CapCut (скоро перейду на DaVinci Resolve), GIMP для работы с изображениями.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="800">
+<div class="faq-question">
+<i class="fas fa-bullseye"></i>
+Какие у тебя цели?
+</div>
+<div class="faq-answer">
+Мои цели - написать твикер и развивать канал
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="900">
+<div class="faq-question">
+<i class="fas fa-heart"></i>
+Почему ты делаешь всё это бесплатно?
+</div>
+<div class="faq-answer">
+Я не хочу, чтобы вы тратили свои деньги на обычную программу. Делаю всё это с любовью чтобы помочь сообществу.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1000">
+<div class="faq-question">
+<i class="fas fa-users"></i>
+Есть ли у тебя команда?
+</div>
+<div class="faq-answer">
+Пока что работаю один, но возможно, скоро начну набор в свою команду.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1100">
+<div class="faq-question">
+<i class="fas fa-lightbulb"></i>
+Откуда берёшь идеи для проектов?
+</div>
+<div class="faq-answer">
+Идеи приходят из личного опыта. Всегда ищу способы сделать жизнь пользователей проще.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1200">
+<div class="faq-question">
+<i class="fas fa-clock"></i>
+Сколько времени уходит на создание сборки?
+</div>
+<div class="faq-answer">
+От 2 до 5 дней. Это включает тестирование, оптимизацию, добавление программ и финальную проверку стабильности.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1300">
+<div class="faq-question">
+<i class="fas fa-shield-alt"></i>
+Безопасно ли твоё ПО?
+</div>
+<div class="faq-answer">
+Абсолютно безопасно. Все компоненты тщательно проверяются, никакого вредоносного ПО или скрытых функций. Исходники многих проектов доступны на GitHub.
+</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1400">
+<div class="faq-question">
+<i class="fas fa-envelope"></i>
+Как с тобой связаться?
+</div>
+<div class="faq-answer">
+Лучший способ связи — через предложку. Также можно написать в комментариях к видео или на стриме через чат.
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="section" id="projects">
+<div class="section-title" data-aos="fade-down">
+<h2>Мои проекты</h2>
+</div>
+<div class="projects-grid">
+<div class="project-card" data-aos="fade-up" data-aos-delay="100" id="videobloggerCard">
+<i class="fas fa-video"></i>
+<h3>Блог</h3>
+<p>Снимаю ролики про технику.</p>
+</div>
+<div class="project-card" data-aos="fade-up" data-aos-delay="200" id="programmerCard">
+<i class="fas fa-code"></i>
+<h3>Программы</h3>
+<p>Разрабатываю программы и скрипты на Python. Скоро буду их писать на других языках.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+<p><i class="fas fa-code"></i> Timix 2026</p>
+<p class="copyright">Все права защищены</p>
+</div>
+</footer>
+</div>
+<!-- Videoblogger Page -->
+<div class="main-content" id="videobloggerPage">
+<section class="download-page">
+<div class="download-header">
+<h1 data-aos="fade-down">Блог</h1>
+<p data-aos="fade-up" data-aos-delay="100">Мои каналы</p>
+</div>
+<!-- Улучшенный блок соцсетей -->
+<div class="social-section" style="max-width: 900px; margin: 60px auto 0;">
+<div class="social-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px;">
+<!-- YouTube -->
+<div class="social-card" data-aos="fade-up" data-aos-delay="100" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; cursor: pointer;">
+<div style="font-size: 4rem; margin-bottom: 20px;"><i class="fab fa-youtube"></i></div>
+<h3 style="font-size: 1.6rem; margin-bottom: 15px; font-weight: 600;">YouTube Канал</h3>
+<div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block; min-width: 120px;">
+<span style="font-size: 1.3rem; font-weight: bold;" id="youtubeSubs">64</span>
+<p style="font-size: 0.9rem; opacity: 0.8; margin: 5px 0 0 0;">подписчика</p>
+</div>
+<p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">Обзоры на технику и операционные системы</p>
+<a href="https://youtube.com/@tmxgames" target="_blank" style="display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.2); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Перейти
+</a>
+</div>
+<!-- Telegram Основной -->
+<div class="social-card" data-aos="fade-up" data-aos-delay="200" style="background: linear-gradient(135deg, #0088cc 0%, #00bfa5 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3); transition: all 0.3s ease; cursor: pointer;">
+<div style="font-size: 4rem; margin-bottom: 20px;"><i class="fab fa-telegram-plane"></i></div>
+<h3 style="font-size: 1.6rem; margin-bottom: 15px; font-weight: 600;">Основной Telegram канал</h3>
+<div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block; min-width: 120px;">
+<span style="font-size: 1.3rem; font-weight: bold;" id="telegramMainSubs">22</span>
+<p style="font-size: 0.9rem; opacity: 0.8; margin: 5px 0 0 0;">подписчика</p>
+</div>
+<p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">Общение с подписчиками, ответы на вопросы и обсуждения</p>
+<a href="https://t.me/Timix056" target="_blank" style="display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.2); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Подписаться
+</a>
+</div>
+
+<!-- TikTok -->
+<div class="social-card" data-aos="fade-up" data-aos-delay="300" style="background: linear-gradient(135deg, #000000 0%, #696969 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; cursor: pointer;">
+<div style="font-size: 4rem; margin-bottom: 20px;"><i class="fab fa-tiktok"></i></div>
+<h3 style="font-size: 1.6rem; margin-bottom: 15px; font-weight: 600;">TikTok</h3>
+<div style="margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-block; min-width: 120px;">
+<span style="font-size: 1.3rem; font-weight: bold;" id="tiktokFollowers">48</span>
+<p style="font-size: 0.9rem; opacity: 0.8; margin: 5px 0 0 0;">подписчиков</p>
+</div>
+<p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">Короткие видео с лайфхаками и интересными фактами и просто интересные видео</p>
+<a href="https://tiktok.com/@timix056" target="_blank" style="display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.2); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Смотреть
+</a>
+</div>
+<!-- VK -->
+<div class="social-card" data-aos="fade-up" data-aos-delay="400" style="background: linear-gradient(135deg, #4c75a3 0%, #5d8dc6 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(76, 117, 163, 0.3); transition: all 0.3s ease; cursor: pointer;">
+<div style="font-size: 4rem; margin-bottom: 20px;"><i class="fab fa-vk"></i></div>
+<h3 style="font-size: 1.6rem; margin-bottom: 15px; font-weight: 600;">ВКонтакте</h3>
+<div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block; min-width: 120px;">
+<span style="font-size: 1.3rem; font-weight: bold;" id="vkMembers">6</span>
+<p style="font-size: 0.9rem; opacity: 0.8; margin: 5px 0 0 0;">подписчиков</p>
+</div>
+<p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">Сюда просто перезаливаю видео с ютуба и иногда посты из Telegram</p>
+<a href="https://vk.com/timix5" target="_blank" style="display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.2); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Вступить
+</a>
+</div>
+<!-- Twitch -->
+<div class="social-card" data-aos="fade-up" data-aos-delay="500" style="background: linear-gradient(135deg, #6441a5 0%, #9147ff 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(100, 65, 165, 0.3); transition: all 0.3s ease; cursor: pointer;">
+<div style="font-size: 4rem; margin-bottom: 20px;"><i class="fab fa-twitch"></i></div>
+<h3 style="font-size: 1.6rem; margin-bottom: 15px; font-weight: 600;">Twitch</h3>
+<div style="margin-bottom: 15px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block; min-width: 120px;">
+<span style="font-size: 1.3rem; font-weight: bold;" id="twitchFollowers">2</span>
+<p style="font-size: 0.9rem; opacity: 0.8; margin: 5px 0 0 0;">фолловера</p>
+</div>
+<p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">Иногда запускаю стримы и играю на них в разные игры</p>
+<a href="https://twitch.tv/t1m1xgames" target="_blank" style="display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.2); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Стать фолловером
+</a>
+</div>
+<!-- Техническая поддержка и реклама -->
+<div class="social-card" data-aos="fade-up" data-aos-delay="600" style="background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(255, 65, 108, 0.3); transition: all 0.3s ease; cursor: pointer;">
+<div style="font-size: 4rem; margin-bottom: 20px;"><i class="fas fa-headset"></i></div>
+<h3 style="font-size: 1.6rem; margin-bottom: 15px; font-weight: 600;">Техподдержка</h3>
+<p style="font-size: 1.1rem; opacity: 0.9; line-height: 1.6;">Связь для технических вопросов, сотрудничества и рекламных предложений</p>
+<a href="https://t.me/Timix_support_bot" target="_blank" style="display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.2); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: 2px solid white;">
+<i class="fas fa-comments" style="margin-right: 8px;"></i>Написать
+</a>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 40px;" data-aos="fade-up" data-aos-delay="900">
+<button class="download-link" style="background: var(--gradient); border: none; cursor: pointer;" id="backToHomeFromVideo">
+<i class="fas fa-arrow-left"></i> Вернуться на главную
+</button>
+</div>
+</section>
+<footer>
+<div class="footer-content">
+<p><i class="fas fa-code"></i> Timix 2026</p>
+<p class="copyright">Все права защищены</p>
+</div>
+</footer>
+</div>
+<!-- Programmer Page -->
+<div class="main-content" id="programmerPage">
+<section class="download-page">
+<div class="download-header">
+<h1 data-aos="fade-down">Мои программы </h1>
+</div>
+<div class="download-cards">
+<div class="download-card" data-aos="fade-right">
+<h2><i class="fab fa-python"></i> Find My Windows PC (FMWinPC)</h2>
+<p>Telegram бот для управления компьютером.</p>
+<a href="https://github.com/timixgames/Find-My-Windows-PC-FMWinPC-" target="_blank" class="download-link">
+<i class="fas fa-download"></i> Скачать с GitHub
+</a>
+</div>
+</div>
+<div class="faq-section" data-aos="fade-up">
+<h2>FAQ</h2>
+<div class="faq-grid">
+<div class="faq-item-page">
+<h3>Как установить программу?</h3>
+<p><strong>Шаг 1: Установка Python</strong><br>
+Скачайте и установите последнюю версию Python с официального сайта <a href="https://www.python.org" target="_blank">python.org</a>. При установке обязательно поставьте галочку "Add Python to PATH".</p>
+<p><strong>Шаг 2: Установка необходимых библиотек</strong><br>
+Откройте командную строку (Win + R → cmd) и выполните следующие команды по очереди:<br>
+<code>pip install psutil</code><br>
+<code>pip install mss</code><br>
+<code>pip install pillow</code><br>
+<code>pip install pyperclip</code><br>
+Или одной командой:<br>
+<code>pip install psutil mss pillow pyperclip</code></p>
+<p><strong>Шаг 3: Скачивание NirCmd</strong><br>
+Скачайте утилиту NirCmd с официального сайта <a href="https://www.nirsoft.net/utils/nircmd.html" target="_blank">nirsoft.net/utils/nircmd.html</a>. Распакуйте архив и скопируйте файл <code>nircmd.exe</code> в папку с программой.</p>
+<p><strong>Шаг 4: Подготовка папки</strong><br>
+Создайте папку для программы (рекомендуется на системном диске, например: <code>C:\</code>). Не рекомендуется размещать на Рабочем столе или в папке Загрузок.</p>
+<p><strong>Шаг 5: Настройка Telegram-бота и токена</strong><br>
+1. Перейдите в бота <a href="https://t.me/BotFather" target="_blank">@BotFather</a><br>
+2. Нажмите <code>/newbot</code> и следуйте инструкциям:<br>
+- Придумайте имя для бота (например: "Мой ПК")<br>
+- Придумайте username бота (должен заканчиваться на <code>_bot</code> или <code>bot</code>, например: <code>my_pc_control_bot</code>)<br>
+3. Бот отправит вам токен в формате: <code>1234567890:ABCdefGHIjklMNOpqrsTUVwxyz</code><br>
+4. Откройте файл программы в текстовом редакторе (например, PyCharm или Notepad++)<br>
+5. Найдите строку: <code>BOT_TOKEN = 'YOUR_BOT_API'</code><br>
+6. Замените <code>'YOUR_BOT_API'</code> на полученный токен</p>
+<p><strong>Шаг 6: Получение вашего Telegram ID</strong><br>
+1. Перейдите в бота <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a><br>
+2. Бот покажет ваш ID (например: <code>5427175293</code>)<br>
+3. В файле программы найдите строку: <code>MY_USER_ID = YOUR_USER_ID</code><br>
+4. Замените <code>YOUR_USER_ID</code> на ваш полученный ID</p>
+<p><strong>Шаг 8: Первый запуск</strong><br>
+1. Перейдите в вашего бота</code>)<br>
+2. Выберите язык интерфейса (Русский или English)<br>
+3. Готово! Бот теперь управляет вашим компьютером.</p>
+</div>
+<div class="faq-item-page">
+<h3>Требуется ли активация?</h3>
+<p>Нет, программа полностью бесплатна и не требует активации. Все функции доступны сразу после установки.</p>
+</div>
+<div class="faq-item-page">
+<h3>Какие системные требования?</h3>
+<p>Windows 10/11, 2 ГБ ОЗУ, 100 МБ свободного места на диске. Работает на всех версиях Windows 10 и выше.</p>
+</div>
+<div class="faq-item-page">
+<h3>Есть ли обновления?</h3>
+<p>Да, программа регулярно обновляется. Вы можете проверить наличие обновлений в разделе "Помощь" внутри программы.</p>
+</div>
+<div class="faq-item-page">
+<h3>Какие функции доступны в боте?</h3>
+<p>Бот позволяет: управлять громкостью и яркостью экрана, делать скриншоты всех мониторов, проверять активность ПК, просматривать сетевые подключения, получать отчёты об использовании системы, запускать программы, копировать текст в буфер обмена, проверять интернет, управлять питанием (сон, выход, блокировка, перезагрузка, выключение), отслеживать местоположение ПК и находить компьютер по звуку.</p>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 40px;" data-aos="fade-up" data-aos-delay="200">
+<button class="download-link" style="background: var(--gradient); border: none; cursor: pointer;" id="backToHomeFromProg">
+<i class="fas fa-arrow-left"></i> Вернуться на главную
+</button>
+</div>
+</section>
+<footer>
+<div class="footer-content">
+<p><i class="fas fa-code"></i> Timix 2026</p>
+<p class="copyright">Все права защищены</p>
+</div>
+</footer>
+</div>
+<script>
+// Initialize AOS with adaptive duration
+let scrollSpeed = 0;
+let lastScrollY = 0;
+let lastScrollTime = Date.now();
+// Track scroll speed
+window.addEventListener('scroll', () => {
+const currentTime = Date.now();
+const timeDiff = currentTime - lastScrollTime;
+const scrollDiff = Math.abs(window.scrollY - lastScrollY);
+if (timeDiff > 0) {
+scrollSpeed = scrollDiff / timeDiff;
+}
+lastScrollY = window.scrollY;
+lastScrollTime = currentTime;
+});
+// Function to get adaptive duration based on scroll speed
+function getAdaptiveDuration(baseDuration = 800) {
+// If scrolling fast (> 0.5 pixels per ms), reduce duration
+if (scrollSpeed > 0.5) {
+return Math.max(200, baseDuration * 0.3); // Minimum 200ms
+} else if (scrollSpeed > 0.2) {
+return Math.max(400, baseDuration * 0.6); // Minimum 400ms
+}
+return baseDuration;
+}
+// Custom AOS initialization with adaptive animations
+function initAdaptiveAOS() {
+AOS.init({
+duration: 800,
+easing: 'ease-in-out',
+once: true,
+disable: 'mobile' // Disable on mobile for better performance
+});
+// Override AOS animation duration dynamically
+const aosElements = document.querySelectorAll('[data-aos]');
+aosElements.forEach(element => {
+element.addEventListener('aos:in', () => {
+const computedStyle = window.getComputedStyle(element);
+const currentAnimationDuration = parseFloat(computedStyle.animationDuration) * 1000;
+const newDuration = getAdaptiveDuration(currentAnimationDuration);
+if (newDuration !== currentAnimationDuration) {
+element.style.animationDuration = newDuration + 'ms';
+}
+});
+});
+}
+// Initialize AOS
+initAdaptiveAOS();
+// Page Navigation
+const homePage = document.getElementById('homePage');
+const videobloggerPage = document.getElementById('videobloggerPage');
+const programmerPage = document.getElementById('programmerPage');
+// Card click handlers
+document.getElementById('videobloggerCard').addEventListener('click', () => {
+showPage(videobloggerPage);
+});
+document.getElementById('programmerCard').addEventListener('click', () => {
+showPage(programmerPage);
+});
+// Back buttons
+document.getElementById('backToHomeFromVideo').addEventListener('click', () => {
+showPage(homePage);
+});
+document.getElementById('backToHomeFromProg').addEventListener('click', () => {
+showPage(homePage);
+});
+// Nav links
+document.getElementById('navHome').addEventListener('click', (e) => {
+e.preventDefault();
+showPage(homePage);
+});
+document.getElementById('homeBtn').addEventListener('click', () => {
+showPage(homePage);
+});
+function showPage(page) {
+// Hide all pages
+homePage.classList.remove('active');
+videobloggerPage.classList.remove('active');
+programmerPage.classList.remove('active');
+// Show selected page
+page.classList.add('active');
+window.scrollTo(0, 0);
+}
+// Header scroll effect
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 100) {
+header.classList.add('scrolled');
+} else {
+header.classList.remove('scrolled');
+}
+});
+// Scroll Progress Bar
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+const scrollTop = document.documentElement.scrollTop;
+const scrollHeight = document.documentElement.scrollHeight;
+const clientHeight = document.documentElement.clientHeight;
+const scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+scrollProgress.style.width = scrolled + '%';
+});
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+if (!anchor.closest('.social-grid-page') && !anchor.classList.contains('download-link') && !anchor.classList.contains('telegram-btn')) {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+window.scrollTo({
+top: target.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+}
+});
+// Typing animation with adaptive speed
+const typingText = document.querySelector('.typing span');
+const texts = [
+'👨‍💻 Python Developer',
+'🎥 Техно-блогер',
+'🚀 Создаю полезные инструменты',
+'💡 Делаю технологии проще'
+];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100; // Base typing speed
+// Adjust typing speed based on scroll activity
+window.addEventListener('scroll', () => {
+if (scrollSpeed > 0.5) {
+typingSpeed = 30; // Very fast when scrolling fast
+} else if (scrollSpeed > 0.2) {
+typingSpeed = 60; // Fast when scrolling medium
+} else {
+typingSpeed = 100; // Normal when not scrolling or slow scrolling
+}
+});
+function type() {
+const currentText = texts[textIndex];
+const displayText = isDeleting ?
+currentText.substring(0, charIndex - 1) :
+currentText.substring(0, charIndex + 1);
+typingText.textContent = displayText;
+if (!isDeleting && charIndex === currentText.length) {
+isDeleting = true;
+setTimeout(type, 2000);
+} else if (isDeleting && charIndex === 0) {
+isDeleting = false;
+textIndex = (textIndex + 1) % texts.length;
+setTimeout(type, 500);
+} else {
+charIndex += isDeleting ? -1 : 1;
+setTimeout(type, isDeleting ? typingSpeed * 0.5 : typingSpeed);
+}
+}
+setTimeout(type, 4000);
+// FIXED: Надежная система выбора цвета
+const themeToggle = document.getElementById('themeToggle');
+const colorPickerModal = document.getElementById('colorPickerModal');
+const colorOptions = document.querySelectorAll('.color-option');
+const root = document.documentElement;
+// Load saved theme
+const savedPrimary = localStorage.getItem('themePrimary');
+// Apply saved primary color
+if (savedPrimary) {
+applyColorTheme(savedPrimary);
+markSelectedColor(savedPrimary);
+}
+// FIXED: Надежное переключение модального окна
+let isModalOpen = false;
+themeToggle.addEventListener('click', (e) => {
+e.stopPropagation(); // Предотвращаем всплытие события
+if (isModalOpen) {
+// Закрываем модальное окно
+colorPickerModal.style.display = 'none';
+isModalOpen = false;
+} else {
+// Открываем модальное окно
+colorPickerModal.style.display = 'block';
+isModalOpen = true;
+}
+});
+// FIXED: Надежное закрытие при клике вне модального окна
+document.addEventListener('click', (e) => {
+// Проверяем, что клик не по кнопке и не по модальному окну
+if (!colorPickerModal.contains(e.target) && e.target !== themeToggle) {
+colorPickerModal.style.display = 'none';
+isModalOpen = false;
+}
+});
+// FIXED: Предотвращаем закрытие при клике внутри модального окна
+colorPickerModal.addEventListener('click', (e) => {
+e.stopPropagation();
+});
+// Apply color theme function with special black handling
+function applyColorTheme(primaryColor) {
+// Set the primary color
+root.style.setProperty('--primary', primaryColor);
+// Generate secondary color (lighter version for gradients)
+const secondaryColor = lightenColor(primaryColor, 20);
+root.style.setProperty('--secondary', secondaryColor);
+// Remove all theme classes first
+document.body.classList.remove('dark-theme', 'black-theme');
+// Special handling for black color
+if (primaryColor === '#000000') {
+document.body.classList.add('black-theme');
+localStorage.setItem('themeMode', 'black');
+} else {
+// Determine if color is dark or light
+const isDarkColor = isColorDark(primaryColor);
+if (isDarkColor) {
+document.body.classList.add('dark-theme');
+localStorage.setItem('themeMode', 'dark');
+} else {
+localStorage.setItem('themeMode', 'light');
+}
+}
+// Save to localStorage
+localStorage.setItem('themePrimary', primaryColor);
+}
+// Mark selected color option
+function markSelectedColor(primaryColor) {
+colorOptions.forEach(option => {
+option.classList.remove('selected');
+if (option.dataset.primary === primaryColor) {
+option.classList.add('selected');
+}
+});
+}
+// Apply color theme on click
+colorOptions.forEach(option => {
+option.addEventListener('click', (e) => {
+e.stopPropagation(); // Предотвращаем всплытие
+const primaryColor = option.dataset.primary;
+applyColorTheme(primaryColor);
+markSelectedColor(primaryColor);
+// Close modal after selection
+colorPickerModal.style.display = 'none';
+isModalOpen = false;
+});
+});
+// Helper function to lighten color
+function lightenColor(hex, percent) {
+hex = hex.replace('#', '');
+const r = parseInt(hex.substr(0, 2), 16);
+const g = parseInt(hex.substr(2, 2), 16);
+const b = parseInt(hex.substr(4, 2), 16);
+const newR = Math.min(255, r + (255 - r) * percent / 100);
+const newG = Math.min(255, g + (255 - g) * percent / 100);
+const newB = Math.min(255, b + (255 - b) * percent / 100);
+return '#' +
+Math.round(newR).toString(16).padStart(2, '0') +
+Math.round(newG).toString(16).padStart(2, '0') +
+Math.round(newB).toString(16).padStart(2, '0');
+}
+// Helper function to determine if color is dark
+function isColorDark(hex) {
+hex = hex.replace('#', '');
+const r = parseInt(hex.substr(0, 2), 16);
+const g = parseInt(hex.substr(2, 2), 16);
+const b = parseInt(hex.substr(4, 2), 16);
+const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+return luminance < 0.5;
+}
+// Function to detect system/browser color scheme
+function detectSystemColorScheme() {
+// Check if we're in Chromium-based browser
+const isChromium = !!window.chrome || /Chrome/.test(navigator.userAgent);
+if (isChromium) {
+// Try to detect system color scheme
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+if (prefersDark.matches) {
+return 'dark';
+} else if (prefersLight.matches) {
+return 'light';
+}
+}
+// Default fallback
+return null;
+}
+// Handle system preference for initial theme
+if (!savedPrimary) {
+// First try to detect system color scheme
+const systemScheme = detectSystemColorScheme();
+if (systemScheme === 'dark') {
+// Use black color by default for dark systems
+applyColorTheme('#000000'); // Black for dark systems
+markSelectedColor('#000000');
+} else if (systemScheme === 'light') {
+// Use a light color by default
+applyColorTheme('#6c5ce7');
+markSelectedColor('#6c5ce7');
+} else {
+// Fallback to system preference
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+if (prefersDarkScheme.matches) {
+applyColorTheme('#000000');
+markSelectedColor('#000000');
+} else {
+applyColorTheme('#6c5ce7');
+markSelectedColor('#6c5ce7');
+}
+}
+}
+</script>
+</body>
+</html>
+
+
+
+
