@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -21,25 +22,32 @@ box-sizing: border-box;
 --light: #f7f9fc;
 --accent: #fd79a8;
 --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+--bg-primary: var(--light);
+--bg-secondary: #ffffff;
+--bg-card: #ffffff;
+--text-primary: var(--dark);
+--text-secondary: #555555;
+--text-on-primary: #ffffff;
+--shadow-color: rgba(0, 0, 0, 0.1);
+--border-color: rgba(0, 0, 0, 0.1);
 }
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background: var(--light);
-color: var(--dark);
+background: var(--bg-primary);
+color: var(--text-primary);
 overflow-x: hidden;
 line-height: 1.6;
-transition: background-color 0.3s ease, color 0.3s ease;
+transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
-/* Header & Hero */
 header {
 background: var(--gradient);
-color: white;
+color: var(--text-on-primary);
 padding: 20px 0;
 position: fixed;
 width: 100%;
 top: 0;
 z-index: 1000;
-box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+box-shadow: 0 2px 15px var(--shadow-color);
 backdrop-filter: blur(10px);
 transition: all 0.3s ease;
 }
@@ -62,6 +70,7 @@ display: flex;
 align-items: center;
 gap: 10px;
 cursor: pointer;
+color: var(--text-on-primary);
 }
 .logo i {
 font-size: 32px;
@@ -71,7 +80,7 @@ display: flex;
 gap: 30px;
 }
 .nav-links a {
-color: white;
+color: var(--text-on-primary);
 text-decoration: none;
 font-weight: 500;
 font-size: 16px;
@@ -86,13 +95,12 @@ bottom: 0;
 left: 0;
 width: 0;
 height: 2px;
-background: white;
+background: var(--text-on-primary);
 transition: width 0.3s ease;
 }
 .nav-links a:hover::after {
 width: 100%;
 }
-/* Main Content */
 .main-content {
 display: none;
 opacity: 0;
@@ -111,16 +119,7 @@ text-align: center;
 padding: 0 20px;
 position: relative;
 overflow: hidden;
-}
-.hero::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-z-index: 0;
+background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
 }
 .hero-content {
 max-width: 800px;
@@ -139,7 +138,7 @@ animation: fadeInUp 1s ease;
 .hero p {
 font-size: 1.5rem;
 margin-bottom: 40px;
-color: #555;
+color: var(--text-secondary);
 animation: fadeInUp 1s ease 0.2s forwards;
 opacity: 0;
 }
@@ -158,39 +157,18 @@ overflow: hidden;
 animation: typing 3s steps(30, end) 1s infinite alternate, blink 0.7s step-end infinite;
 }
 @keyframes typing {
-0%,
-10% {
-width: 0;
-}
-30%,
-40% {
-width: 150px;
-}
-60%,
-70% {
-width: 300px;
-}
-90%,
-100% {
-width: 450px;
-}
+0%, 10% { width: 0; }
+30%, 40% { width: 150px; }
+60%, 70% { width: 300px; }
+90%, 100% { width: 450px; }
 }
 @keyframes blink {
-50% {
-border-color: transparent;
-}
+50% { border-color: transparent; }
 }
 @keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(30px);
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
 }
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-/* About Section */
 .section {
 padding: 100px 20px;
 max-width: 1200px;
@@ -218,23 +196,24 @@ height: 4px;
 background: var(--secondary);
 border-radius: 2px;
 }
-/* FAQ Section */
 .faq-container {
 max-width: 800px;
 margin: 0 auto;
 }
 .faq-item {
-background: white;
+background: var(--bg-card);
 border-radius: 12px;
 padding: 25px;
 margin-bottom: 20px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+box-shadow: 0 5px 15px var(--shadow-color);
 transition: all 0.3s ease;
 border-left: 4px solid var(--primary);
+color: var(--text-primary);
+border: 1px solid var(--border-color);
 }
 .faq-item:hover {
 transform: translateX(10px);
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+box-shadow: 0 8px 25px var(--shadow-color);
 }
 .faq-question {
 font-size: 1.2rem;
@@ -249,10 +228,9 @@ gap: 10px;
 font-size: 1.1rem;
 }
 .faq-answer {
-color: #666;
+color: var(--text-secondary);
 line-height: 1.8;
 }
-/* Projects Section */
 .projects-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -260,22 +238,21 @@ gap: 40px;
 margin-top: 40px;
 }
 .project-card {
-background: white;
+background: var(--bg-card);
 padding: 40px 30px;
 border-radius: 15px;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+box-shadow: 0 10px 30px var(--shadow-color);
 text-align: center;
 transition: all 0.3s ease;
 position: relative;
 overflow: hidden;
 cursor: pointer;
-transform: translateY(0);
-transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-box-shadow 0.3s ease;
+color: var(--text-primary);
+border: 1px solid var(--border-color);
 }
 .project-card:hover {
 transform: translateY(-20px) scale(1.05);
-box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+box-shadow: 0 20px 50px var(--shadow-color);
 }
 .project-card::before {
 content: '';
@@ -293,23 +270,22 @@ transform: scaleX(1.1);
 .project-card i {
 font-size: 4rem;
 margin-bottom: 20px;
-background: var(--gradient);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-transition: transform 0.3s ease;
+color: #ffffff !important;
+-webkit-text-fill-color: #ffffff !important;
+text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .project-card:hover i {
-transform: scale(1.2) rotate(5deg);
+transform: scale(1.15) rotate(3deg);
 }
 .project-card h3 {
 font-size: 1.8rem;
 margin-bottom: 15px;
-color: var(--dark);
+color: var(--text-primary);
 transition: color 0.3s ease;
 }
 .project-card p {
-color: #666;
+color: var(--text-secondary);
 font-size: 1.1rem;
 transition: color 0.3s ease;
 }
@@ -317,7 +293,6 @@ transition: color 0.3s ease;
 .project-card:hover p {
 color: var(--primary);
 }
-/* Download Page Styles */
 .download-page {
 padding: 80px 20px;
 max-width: 1000px;
@@ -339,13 +314,15 @@ gap: 40px;
 margin-bottom: 60px;
 }
 .download-card {
-background: white;
+background: var(--bg-card);
 border-radius: 15px;
 padding: 40px;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+box-shadow: 0 10px 30px var(--shadow-color);
 transition: all 0.3s ease;
 position: relative;
 overflow: hidden;
+color: var(--text-primary);
+border: 1px solid var(--border-color);
 }
 .download-card::before {
 content: '';
@@ -358,71 +335,25 @@ background: var(--gradient);
 }
 .download-card:hover {
 transform: translateY(-10px);
-box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+box-shadow: 0 15px 40px var(--shadow-color);
 }
 .download-card h2 {
 font-size: 1.8rem;
 margin-bottom: 20px;
-color: var(--dark);
+color: var(--text-primary);
 display: flex;
 align-items: center;
 gap: 10px;
 }
-.windows-logo {
-display: inline-block;
-width: 32px;
-height: 32px;
-position: relative;
-animation: pulse 2s infinite;
-}
-.windows-logo::before,
-.windows-logo::after {
-content: '';
-position: absolute;
-background: var(--primary);
-border-radius: 2px;
-}
-.windows-logo::before {
-width: 12px;
-height: 12px;
-top: 0;
-left: 0;
-animation: windowsMove 2s infinite;
-}
-.windows-logo::after {
-width: 12px;
-height: 12px;
-bottom: 0;
-right: 0;
-animation: windowsMove 2s infinite 1s;
-}
-@keyframes windowsMove {
-0%,
-100% {
-transform: scale(1);
-}
-50% {
-transform: scale(1.2);
-}
-}
-@keyframes pulse {
-0%,
-100% {
-transform: scale(1);
-}
-50% {
-transform: scale(1.05);
-}
-}
 .download-card p {
 margin-bottom: 20px;
-color: #666;
+color: var(--text-secondary);
 line-height: 1.8;
 }
 .download-link {
 display: inline-block;
 background: var(--gradient);
-color: white;
+color: var(--text-on-primary);
 padding: 15px 40px;
 border-radius: 10px;
 text-decoration: none;
@@ -439,10 +370,11 @@ box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
 margin-right: 10px;
 }
 .faq-section {
-background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+background: var(--bg-secondary);
 padding: 60px 20px;
 border-radius: 15px;
 margin-top: 40px;
+border: 1px solid var(--border-color);
 }
 .faq-section h2 {
 text-align: center;
@@ -458,26 +390,41 @@ max-width: 900px;
 margin: 0 auto;
 }
 .faq-item-page {
-background: white;
+background: var(--bg-card);
 padding: 25px;
 border-radius: 10px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+box-shadow: 0 5px 15px var(--shadow-color);
 transition: all 0.3s ease;
+color: var(--text-primary);
+border: 1px solid var(--border-color);
 }
 .faq-item-page:hover {
 transform: translateX(10px);
-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+box-shadow: 0 8px 20px var(--shadow-color);
 }
 .faq-item-page h3 {
 font-size: 1.3rem;
 margin-bottom: 10px;
-color: var(--dark);
+color: var(--text-primary);
 }
 .faq-item-page p {
-color: #666;
+color: var(--text-secondary);
 line-height: 1.7;
 }
-
+.faq-item-page code {
+background: rgba(108, 92, 231, 0.15);
+padding: 2px 6px;
+border-radius: 4px;
+color: var(--primary);
+font-family: monospace;
+}
+.faq-item-page a {
+color: var(--primary);
+text-decoration: none;
+}
+.faq-item-page a:hover {
+text-decoration: underline;
+}
 .telegram-subscribe-btn {
 background: linear-gradient(135deg, #0088cc 0%, #00bfa5 100%);
 color: white;
@@ -505,12 +452,12 @@ background: linear-gradient(135deg, #00a8ff 0%, #00d4ff 100%);
 .telegram-subscribe-btn i {
 font-size: 1.8rem;
 }
-/* Footer */
 footer {
-background: var(--dark);
-color: white;
+background: var(--bg-secondary);
+color: var(--text-primary);
 text-align: center;
 padding: 40px 20px;
+border-top: 1px solid var(--border-color);
 }
 .footer-content {
 max-width: 600px;
@@ -518,14 +465,13 @@ margin: 0 auto;
 }
 .footer-content p {
 margin: 10px 0;
-color: #aaa;
+color: var(--text-secondary);
 }
 .copyright {
 margin-top: 20px;
-color: #777;
+color: var(--text-secondary);
 font-size: 0.9rem;
 }
-/* Scroll Progress */
 .scroll-progress {
 position: fixed;
 top: 0;
@@ -536,7 +482,6 @@ width: 0;
 z-index: 9999;
 transition: width 0.1s ease;
 }
-/* Theme Toggle Button */
 .theme-toggle {
 position: fixed;
 bottom: 30px;
@@ -546,10 +491,10 @@ height: 50px;
 border-radius: 50%;
 background: var(--gradient);
 border: none;
-color: white;
+color: var(--text-on-primary);
 font-size: 1.2rem;
 cursor: pointer;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+box-shadow: 0 5px 15px var(--shadow-color);
 z-index: 1000;
 transition: all 0.3s ease;
 display: flex;
@@ -558,7 +503,7 @@ justify-content: center;
 }
 .theme-toggle:hover {
 transform: scale(1.1) rotate(30deg);
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+box-shadow: 0 8px 25px var(--shadow-color);
 }
 .theme-toggle i {
 transition: transform 0.3s ease;
@@ -566,23 +511,22 @@ transition: transform 0.3s ease;
 .theme-toggle:hover i {
 transform: rotate(360deg);
 }
-
 .color-picker-modal {
 position: fixed;
 bottom: 90px;
 right: 30px;
-background: white;
+background: var(--bg-card);
 padding: 20px;
 border-radius: 15px;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+box-shadow: 0 10px 30px var(--shadow-color);
 z-index: 999;
 display: none;
-/* Hidden by default */
 width: 320px;
+border: 1px solid var(--border-color);
 }
 .color-picker-modal h3 {
 margin-bottom: 15px;
-color: var(--dark);
+color: var(--text-primary);
 font-size: 1.2rem;
 text-align: center;
 }
@@ -601,59 +545,14 @@ border: 3px solid transparent;
 }
 .color-option:hover {
 transform: scale(1.15);
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+box-shadow: 0 5px 15px var(--shadow-color);
 }
 .color-option.selected {
-border-color: #333;
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+border-color: var(--primary);
+box-shadow: 0 0 15px var(--shadow-color);
 }
-/* Dark Theme */
-body.dark-theme {
---dark: #f8f9fa;
---light: #1a1b26;
-background: #161722;
-color: #e0e0e0;
-}
-body.dark-theme header {
-background: linear-gradient(135deg, #2d2e41 0%, #1e293b 100%) !important;
-}
-body.dark-theme header.scrolled {
-background: linear-gradient(135deg, #2d2e41 0%, #1e293b 100%) !important;
-}
-body.dark-theme .faq-item,
-body.dark-theme .project-card,
-body.dark-theme .download-card,
-body.dark-theme .faq-item-page {
-background: #252636;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-color: #e0e0e0;
-}
-body.dark-theme .faq-answer,
-body.dark-theme .project-card p,
-body.dark-theme .download-card p,
-body.dark-theme .faq-item-page p {
-color: #aaa;
-}
-body.dark-theme footer {
-background: #1e1f29;
-}
-body.dark-theme .section-title h2 {
-color: #a78bfa;
-}
-body.dark-theme .faq-section {
-background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-}
-body.dark-theme .color-picker-modal {
-background: #252636;
-color: #e0e0e0;
-}
-body.dark-theme .telegram-subscribe-btn {
-background: linear-gradient(135deg, #006699 0%, #0088aa 100%);
-}
-body.dark-theme .telegram-subscribe-btn:hover {
-background: linear-gradient(135deg, #0088cc 0%, #00bfa5 100%);
-}
-/* Black Theme - FULL WHITE TEXT */
+
+/* ========== ЧЁРНАЯ ТЕМА (как в первой версии) ========== */
 body.black-theme {
 --light: #000000;
 background: #000000;
@@ -666,7 +565,6 @@ body.black-theme header {
 background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important;
 color: white !important;
 }
-
 body.black-theme .hero h1 {
 background: linear-gradient(135deg, white 0%, #a0a0a0 100%) !important;
 -webkit-background-clip: text !important;
@@ -715,66 +613,56 @@ color: white !important;
 body.black-theme .telegram-subscribe-btn:hover {
 background: linear-gradient(135deg, #0077aa 0%, #0099cc 100%);
 }
-/* Responsive */
+/* ========== КОНЕЦ ЧЁРНОЙ ТЕМЫ ========== */
+
+/* ========== ЯРКАЯ КНОПКА НАЗАД НА СТРАНИЦЕ БЛОГА ========== */
+#backToHomeFromVideo {
+background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%) !important;
+box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5) !important;
+}
+#backToHomeFromVideo:hover {
+background: linear-gradient(135deg, #8a7be8 0%, #1fdada 100%) !important;
+box-shadow: 0 12px 35px rgba(108, 92, 231, 0.6) !important;
+transform: translateY(-5px) !important;
+}
+/* ========== КОНЕЦ ЯРКОЙ КНОПКИ ========== */
+
 @media (max-width: 768px) {
-.hero h1 {
-font-size: 2.8rem;
+.hero h1 { font-size: 2.8rem; }
+.hero p { font-size: 1.2rem; }
+.typing { font-size: 1.3rem; }
+.nav-links { display: none; }
+.section, .download-page { padding: 60px 20px; }
+.section-title h2, .download-header h1 { font-size: 2rem; }
+.download-cards { grid-template-columns: 1fr; }
+.theme-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+.color-picker-modal { bottom: 80px; right: 20px; width: 280px; }
+.color-options { gap: 10px; grid-template-columns: repeat(4, 1fr); }
+.color-option { width: 50px; height: 50px; }
+.telegram-subscribe-btn { padding: 20px 30px; font-size: 1.1rem; margin: 40px 20px; }
 }
-.hero p {
-font-size: 1.2rem;
+*, *::before, *::after {
+transition: background-color 0.4s ease, color 0.4s ease, 
+border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease !important;
 }
-.typing {
-font-size: 1.3rem;
+.typing span,
+.windows-logo::before,
+.windows-logo::after {
+transition: none !important;
 }
-.nav-links {
-display: none;
+#githubCard {
+border-left: 4px solid #333;
 }
-.section,
-.download-page {
-padding: 60px 20px;
-}
-.section-title h2,
-.download-header h1 {
-font-size: 2rem;
-}
-.download-cards {
-grid-template-columns: 1fr;
-}
-.theme-toggle {
-bottom: 20px;
-right: 20px;
-width: 45px;
-height: 45px;
-}
-.color-picker-modal {
-bottom: 80px;
-right: 20px;
-width: 280px;
-}
-.color-options {
-gap: 10px;
-grid-template-columns: repeat(4, 1fr);
-}
-.color-option {
-width: 50px;
-height: 50px;
-}
-.telegram-subscribe-btn {
-padding: 20px 30px;
-font-size: 1.1rem;
-margin: 40px 20px;
-}
+#githubCard:hover {
+border-left-color: var(--primary);
 }
 </style>
 </head>
 <body>
-<!-- Scroll Progress Bar -->
 <div class="scroll-progress" id="scrollProgress"></div>
-<!-- Theme Toggle Button -->
 <button class="theme-toggle" id="themeToggle">
 <i class="fas fa-palette"></i>
 </button>
-<!-- Color Picker Modal - FIXED VERSION -->
 <div class="color-picker-modal" id="colorPickerModal">
 <h3>Выберите основной цвет</h3>
 <div class="color-options">
@@ -808,7 +696,6 @@ margin: 40px 20px;
 </header>
 
 <div class="main-content active" id="homePage">
-<!-- Hero Section -->
 <section class="hero">
 <div class="hero-content">
 <h1 data-aos="fade-up">Timix</h1>
@@ -825,107 +712,67 @@ margin: 40px 20px;
 </div>
 <div class="faq-container">
 <div class="faq-item" data-aos="fade-up">
-<div class="faq-question">
-<i class="fas fa-user"></i>
-Кто ты такой?
-</div>
+<div class="faq-question"><i class="fas fa-user"></i> Кто ты такой?</div>
 <div class="faq-answer">
 Я — Timix, начинающий техноблогер, течтокер. В своих видео я рассказываю про компьютеры, телефоны и другую технику. Так же я являюсь начинающим программистом. Я пока знаю языки Python и HTML, но скоро буду делать свои программы и на других языках.
 </div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-<div class="faq-question">
-<i class="fas fa-birthday-cake"></i>
-Сколько тебе лет?
-</div>
+<div class="faq-question"><i class="fas fa-birthday-cake"></i> Сколько тебе лет?</div>
 <div class="faq-answer">
 Мне 13 лет. Начал разбираться в компьютерах в 8-9 лет, а год назад заинтересовался разработкой сборок на Windows и программированием.
 </div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
-<div class="faq-question">
-<i class="fas fa-video"></i>
-Как давно ты ведёшь YouTube канал?
-</div>
+<div class="faq-question"><i class="fas fa-video"></i> Как давно ты ведёшь YouTube канал?</div>
 <div class="faq-answer">
 Мой канал существует уже более 3 лет. У меня больше Shorts'ев, но я больше их не выпускаю.
 </div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="700">
-<div class="faq-question">
-<i class="fas fa-tools"></i>
-Какие программы ты используешь в своей карьере?
-</div>
+<div class="faq-question"><i class="fas fa-tools"></i> Какие программы ты используешь в своей карьере?</div>
 <div class="faq-answer">
 Для программирования: CodePen, PyCharm, Git. Для монтажа видео я пользуюсь CapCut (скоро перейду на DaVinci Resolve), GIMP для работы с изображениями.
 </div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="800">
-<div class="faq-question">
-<i class="fas fa-bullseye"></i>
-Какие у тебя цели?
-</div>
+<div class="faq-question"><i class="fas fa-bullseye"></i> Какие у тебя цели?</div>
 <div class="faq-answer">
-Мои цели - написать твикер и развивать канал
-</div>
+Мои цели - написать твикер и развивать канал</div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="900">
-<div class="faq-question">
-<i class="fas fa-heart"></i>
-Почему ты делаешь всё это бесплатно?
-</div>
+<div class="faq-question"><i class="fas fa-heart"></i> Почему ты делаешь всё это бесплатно?</div>
 <div class="faq-answer">
 Я не хочу, чтобы вы тратили свои деньги на обычную программу. Делаю всё это с любовью чтобы помочь сообществу.
 </div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="1000">
-<div class="faq-question">
-<i class="fas fa-users"></i>
-Есть ли у тебя команда?
-</div>
+<div class="faq-question"><i class="fas fa-users"></i> Есть ли у тебя команда?</div>
 <div class="faq-answer">
 Пока что работаю один, но возможно, скоро начну набор в свою команду.
 </div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="1100">
-<div class="faq-question">
-<i class="fas fa-lightbulb"></i>
-Откуда берёшь идеи для проектов?
-</div>
+<div class="faq-question"><i class="fas fa-lightbulb"></i> Откуда берёшь идеи для проектов?</div>
 <div class="faq-answer">
 Идеи приходят из личного опыта. Всегда ищу способы сделать жизнь пользователей проще.
 </div>
 </div>
-<div class="faq-item" data-aos="fade-up" data-aos-delay="1200">
-<div class="faq-question">
-<i class="fas fa-clock"></i>
-Сколько времени уходит на создание сборки?
-</div>
-<div class="faq-answer">
-От 2 до 5 дней. Это включает тестирование, оптимизацию, добавление программ и финальную проверку стабильности.
-</div>
-</div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="1300">
-<div class="faq-question">
-<i class="fas fa-shield-alt"></i>
-Безопасно ли твоё ПО?
-</div>
+<div class="faq-question"><i class="fas fa-shield-alt"></i> Безопасно ли твоё ПО?</div>
 <div class="faq-answer">
 Абсолютно безопасно. Все компоненты тщательно проверяются, никакого вредоносного ПО или скрытых функций. Исходники многих проектов доступны на GitHub.
 </div>
 </div>
 <div class="faq-item" data-aos="fade-up" data-aos-delay="1400">
-<div class="faq-question">
-<i class="fas fa-envelope"></i>
-Как с тобой связаться?
-</div>
+<div class="faq-question"><i class="fas fa-envelope"></i> Как с тобой связаться?</div>
 <div class="faq-answer">
 Лучший способ связи — через предложку. Также можно написать в комментариях к видео или на стриме через чат.
 </div>
 </div>
 </div>
 </section>
-<!-- Projects Section -->
+
 <section class="section" id="projects">
 <div class="section-title" data-aos="fade-down">
 <h2>Мои проекты</h2>
@@ -936,10 +783,10 @@ margin: 40px 20px;
 <h3>Блог</h3>
 <p>Снимаю ролики про технику.</p>
 </div>
-<div class="project-card" data-aos="fade-up" data-aos-delay="200" id="programmerCard">
-<i class="fas fa-code"></i>
-<h3>Программы</h3>
-<p>Разрабатываю программы и скрипты на Python. Скоро буду их писать на других языках.</p>
+<div class="project-card" data-aos="fade-up" data-aos-delay="200" id="githubCard" style="cursor: pointer;" onclick="window.open('https://github.com/timixgames', '_blank')">
+<i class="fab fa-github"></i>
+<h3>Мой GitHub</h3>
+<p>Исходный код моих проектов, скрипты и открытые репозитории.</p>
 </div>
 </div>
 </section>
@@ -961,7 +808,6 @@ margin: 40px 20px;
 
 <div class="social-section" style="max-width: 900px; margin: 60px auto 0;">
 <div class="social-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px;">
-<!-- YouTube -->
 <div class="social-card" data-aos="fade-up" data-aos-delay="100" style="background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3); transition: all 0.3s ease; cursor: pointer;">
 <div style="font-size: 4rem; margin-bottom: 20px;"><i class="fab fa-youtube"></i></div>
 <h3 style="font-size: 1.6rem; margin-bottom: 15px; font-weight: 600;">YouTube Канал</h3>
@@ -987,7 +833,6 @@ margin: 40px 20px;
 <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>Подписаться
 </a>
 </div>
-
 
 <div class="social-card" data-aos="fade-up" data-aos-delay="300" style="background: linear-gradient(135deg, #000000 0%, #696969 100%); border-radius: 15px; padding: 35px 30px; text-align: center; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; cursor: pointer;">
 <div style="font-size: 4rem; margin-bottom: 20px;"><i class="fab fa-tiktok"></i></div>
@@ -1039,7 +884,7 @@ margin: 40px 20px;
 </div>
 </div>
 <div style="text-align: center; margin-top: 40px;" data-aos="fade-up" data-aos-delay="900">
-<button class="download-link" style="background: var(--gradient); border: none; cursor: pointer;" id="backToHomeFromVideo">
+<button class="download-link" id="backToHomeFromVideo">
 <i class="fas fa-arrow-left"></i> Вернуться на главную
 </button>
 </div>
@@ -1135,8 +980,144 @@ margin: 40px 20px;
 </div>
 </footer>
 </div>
-<script>
 
+<script>
+// === УМНАЯ СИСТЕМА ТЕМ ===
+
+function getColorLuminance(hex) {
+hex = hex.replace('#', '');
+const r = parseInt(hex.substr(0, 2), 16) / 255;
+const g = parseInt(hex.substr(2, 2), 16) / 255;
+const b = parseInt(hex.substr(4, 2), 16) / 255;
+const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+return luminance;
+}
+
+function adjustColor(hex, percent) {
+hex = hex.replace('#', '');
+const r = parseInt(hex.substr(0, 2), 16);
+const g = parseInt(hex.substr(2, 2), 16);
+const b = parseInt(hex.substr(4, 2), 16);
+const newR = Math.max(0, Math.min(255, r + (percent * r / 100)));
+const newG = Math.max(0, Math.min(255, g + (percent * g / 100)));
+const newB = Math.max(0, Math.min(255, b + (percent * b / 100)));
+return '#' +
+Math.round(newR).toString(16).padStart(2, '0') +
+Math.round(newG).toString(16).padStart(2, '0') +
+Math.round(newB).toString(16).padStart(2, '0');
+}
+
+function generateThemePalette(primaryColor) {
+const luminance = getColorLuminance(primaryColor);
+let adjustedPrimary, bgPrimary, bgSecondary, bgCard, textPrimary, textSecondary, shadowColor, borderColor;
+
+if (luminance > 0.6) {
+adjustedPrimary = adjustColor(primaryColor, -15);
+bgPrimary = adjustColor(primaryColor, -85);
+bgSecondary = adjustColor(primaryColor, -78);
+bgCard = adjustColor(primaryColor, -70);
+textPrimary = '#ffffff';
+textSecondary = '#e0e0e0';
+shadowColor = 'rgba(0, 0, 0, 0.5)';
+borderColor = 'rgba(255, 255, 255, 0.15)';
+} else if (luminance > 0.3) {
+adjustedPrimary = primaryColor;
+bgPrimary = adjustColor(primaryColor, -75);
+bgSecondary = adjustColor(primaryColor, -68);
+bgCard = adjustColor(primaryColor, -60);
+textPrimary = '#ffffff';
+textSecondary = '#d5d5e5';
+shadowColor = 'rgba(0, 0, 0, 0.4)';
+borderColor = 'rgba(255, 255, 255, 0.12)';
+} else {
+adjustedPrimary = adjustColor(primaryColor, 10);
+bgPrimary = adjustColor(primaryColor, 20);
+bgSecondary = adjustColor(primaryColor, 28);
+bgCard = adjustColor(primaryColor, 38);
+textPrimary = '#ffffff';
+textSecondary = '#d0d0e0';
+shadowColor = 'rgba(0, 0, 0, 0.4)';
+borderColor = 'rgba(255, 255, 255, 0.1)';
+}
+
+const secondaryColor = adjustColor(adjustedPrimary, 25);
+const gradient = `linear-gradient(135deg, ${adjustedPrimary} 0%, ${secondaryColor} 100%)`;
+
+return {
+primary: adjustedPrimary,
+secondary: secondaryColor,
+gradient: gradient,
+bgPrimary, bgSecondary, bgCard,
+textPrimary, textSecondary,
+shadowColor, borderColor,
+isDark: true
+};
+}
+
+function applyColorTheme(primaryColor) {
+const palette = generateThemePalette(primaryColor);
+const root = document.documentElement;
+
+root.style.setProperty('--primary', palette.primary);
+root.style.setProperty('--secondary', palette.secondary);
+root.style.setProperty('--gradient', palette.gradient);
+root.style.setProperty('--bg-primary', palette.bgPrimary);
+root.style.setProperty('--bg-secondary', palette.bgSecondary);
+root.style.setProperty('--bg-card', palette.bgCard);
+root.style.setProperty('--text-primary', palette.textPrimary);
+root.style.setProperty('--text-secondary', palette.textSecondary);
+root.style.setProperty('--shadow-color', palette.shadowColor);
+root.style.setProperty('--border-color', palette.borderColor);
+
+if (primaryColor === '#000000') {
+document.body.classList.add('black-theme');
+} else {
+document.body.classList.remove('black-theme');
+}
+
+localStorage.setItem('themePrimary', primaryColor);
+localStorage.setItem('themePalette', JSON.stringify(palette));
+
+markSelectedColor(primaryColor);
+colorPickerModal.style.display = 'none';
+isModalOpen = false;
+}
+
+function markSelectedColor(primaryColor) {
+colorOptions.forEach(option => {
+option.classList.remove('selected');
+if (option.dataset.primary.toLowerCase() === primaryColor.toLowerCase()) {
+option.classList.add('selected');
+}
+});
+}
+
+function detectSystemColorScheme() {
+const isChromium = !!window.chrome || /Chrome/.test(navigator.userAgent);
+if (isChromium) {
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+if (prefersDark.matches) return 'dark';
+if (prefersLight.matches) return 'light';
+}
+return null;
+}
+
+function initTheme() {
+const savedPrimary = localStorage.getItem('themePrimary');
+if (savedPrimary) {
+applyColorTheme(savedPrimary);
+} else {
+const systemScheme = detectSystemColorScheme();
+if (systemScheme === 'dark') {
+applyColorTheme('#000000');
+} else {
+applyColorTheme('#6c5ce7');
+}
+}
+}
+
+// === АНИМАЦИИ И СКРОЛЛ ===
 let scrollSpeed = 0;
 let lastScrollY = 0;
 let lastScrollTime = Date.now();
@@ -1151,25 +1132,15 @@ scrollSpeed = scrollDiff / timeDiff;
 lastScrollY = window.scrollY;
 lastScrollTime = currentTime;
 });
-// Function to get adaptive duration based on scroll speed
+
 function getAdaptiveDuration(baseDuration = 800) {
-// If scrolling fast (> 0.5 pixels per ms), reduce duration
-if (scrollSpeed > 0.5) {
-return Math.max(200, baseDuration * 0.3); // Minimum 200ms
-} else if (scrollSpeed > 0.2) {
-return Math.max(400, baseDuration * 0.6); // Minimum 400ms
-}
+if (scrollSpeed > 0.5) return Math.max(200, baseDuration * 0.3);
+else if (scrollSpeed > 0.2) return Math.max(400, baseDuration * 0.6);
 return baseDuration;
 }
 
 function initAdaptiveAOS() {
-AOS.init({
-duration: 800,
-easing: 'ease-in-out',
-once: true,
-disable: 'mobile' // Disable on mobile for better performance
-});
-
+AOS.init({ duration: 800, easing: 'ease-in-out', once: true, disable: 'mobile' });
 const aosElements = document.querySelectorAll('[data-aos]');
 aosElements.forEach(element => {
 element.addEventListener('aos:in', () => {
@@ -1185,6 +1156,7 @@ element.style.animationDuration = newDuration + 'ms';
 
 initAdaptiveAOS();
 
+// === НАВИГАЦИЯ ===
 const homePage = document.getElementById('homePage');
 const videobloggerPage = document.getElementById('videobloggerPage');
 const programmerPage = document.getElementById('programmerPage');
@@ -1192,41 +1164,27 @@ const programmerPage = document.getElementById('programmerPage');
 document.getElementById('videobloggerCard').addEventListener('click', () => {
 showPage(videobloggerPage);
 });
-document.getElementById('programmerCard').addEventListener('click', () => {
-showPage(programmerPage);
+document.getElementById('githubCard').addEventListener('click', (e) => {
+e.stopPropagation();
+window.open('https://github.com/timixgames', '_blank');
 });
+document.getElementById('backToHomeFromVideo').addEventListener('click', () => { showPage(homePage); });
+document.getElementById('backToHomeFromProg').addEventListener('click', () => { showPage(homePage); });
+document.getElementById('navHome').addEventListener('click', (e) => { e.preventDefault(); showPage(homePage); });
+document.getElementById('homeBtn').addEventListener('click', () => { showPage(homePage); });
 
-document.getElementById('backToHomeFromVideo').addEventListener('click', () => {
-showPage(homePage);
-});
-document.getElementById('backToHomeFromProg').addEventListener('click', () => {
-showPage(homePage);
-});
-
-document.getElementById('navHome').addEventListener('click', (e) => {
-e.preventDefault();
-showPage(homePage);
-});
-document.getElementById('homeBtn').addEventListener('click', () => {
-showPage(homePage);
-});
 function showPage(page) {
-
 homePage.classList.remove('active');
 videobloggerPage.classList.remove('active');
 programmerPage.classList.remove('active');
-
 page.classList.add('active');
 window.scrollTo(0, 0);
 }
 
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
-if (window.scrollY > 100) {
-header.classList.add('scrolled');
-} else {
-header.classList.remove('scrolled');
-}
+if (window.scrollY > 100) header.classList.add('scrolled');
+else header.classList.remove('scrolled');
 });
 
 const scrollProgress = document.getElementById('scrollProgress');
@@ -1244,41 +1202,25 @@ anchor.addEventListener('click', function(e) {
 e.preventDefault();
 const target = document.querySelector(this.getAttribute('href'));
 if (target) {
-window.scrollTo({
-top: target.offsetTop - 80,
-behavior: 'smooth'
-});
+window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
 }
 });
 }
 });
 
 const typingText = document.querySelector('.typing span');
-const texts = [
-'👨‍💻 Python Developer',
-'🎥 Техно-блогер',
-'🚀 Создаю полезные инструменты',
-'💡 Делаю технологии проще'
-];
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100; // Base typing speed
-// Adjust typing speed based on scroll activity
+const texts = ['👨‍💻 Python Developer', '🎥 Техно-блогер', '🚀 Создаю полезные инструменты', '💡 Делаю технологии проще'];
+let textIndex = 0, charIndex = 0, isDeleting = false, typingSpeed = 100;
+
 window.addEventListener('scroll', () => {
-if (scrollSpeed > 0.5) {
-typingSpeed = 30; // Very fast when scrolling fast
-} else if (scrollSpeed > 0.2) {
-typingSpeed = 60; // Fast when scrolling medium
-} else {
-typingSpeed = 100; // Normal when not scrolling or slow scrolling
-}
+if (scrollSpeed > 0.5) typingSpeed = 30;
+else if (scrollSpeed > 0.2) typingSpeed = 60;
+else typingSpeed = 100;
 });
+
 function type() {
 const currentText = texts[textIndex];
-const displayText = isDeleting ?
-currentText.substring(0, charIndex - 1) :
-currentText.substring(0, charIndex + 1);
+const displayText = isDeleting ? currentText.substring(0, charIndex - 1) : currentText.substring(0, charIndex + 1);
 typingText.textContent = displayText;
 if (!isDeleting && charIndex === currentText.length) {
 isDeleting = true;
@@ -1297,156 +1239,36 @@ setTimeout(type, 4000);
 const themeToggle = document.getElementById('themeToggle');
 const colorPickerModal = document.getElementById('colorPickerModal');
 const colorOptions = document.querySelectorAll('.color-option');
-const root = document.documentElement;
-
-const savedPrimary = localStorage.getItem('themePrimary');
-
-if (savedPrimary) {
-applyColorTheme(savedPrimary);
-markSelectedColor(savedPrimary);
-}
 
 let isModalOpen = false;
 themeToggle.addEventListener('click', (e) => {
 e.stopPropagation();
 if (isModalOpen) {
-
 colorPickerModal.style.display = 'none';
 isModalOpen = false;
 } else {
-
 colorPickerModal.style.display = 'block';
 isModalOpen = true;
 }
 });
 
 document.addEventListener('click', (e) => {
-
 if (!colorPickerModal.contains(e.target) && e.target !== themeToggle) {
 colorPickerModal.style.display = 'none';
 isModalOpen = false;
 }
 });
-
-colorPickerModal.addEventListener('click', (e) => {
-e.stopPropagation();
-});
-
-function applyColorTheme(primaryColor) {
-
-root.style.setProperty('--primary', primaryColor);
-
-const secondaryColor = lightenColor(primaryColor, 20);
-root.style.setProperty('--secondary', secondaryColor);
-
-document.body.classList.remove('dark-theme', 'black-theme');
-
-if (primaryColor === '#000000') {
-document.body.classList.add('black-theme');
-localStorage.setItem('themeMode', 'black');
-} else {
-
-const isDarkColor = isColorDark(primaryColor);
-if (isDarkColor) {
-document.body.classList.add('dark-theme');
-localStorage.setItem('themeMode', 'dark');
-} else {
-localStorage.setItem('themeMode', 'light');
-}
-}
-
-localStorage.setItem('themePrimary', primaryColor);
-}
-
-function markSelectedColor(primaryColor) {
-colorOptions.forEach(option => {
-option.classList.remove('selected');
-if (option.dataset.primary === primaryColor) {
-option.classList.add('selected');
-}
-});
-}
+colorPickerModal.addEventListener('click', (e) => { e.stopPropagation(); });
 
 colorOptions.forEach(option => {
 option.addEventListener('click', (e) => {
-e.stopPropagation(); // Предотвращаем всплытие
+e.stopPropagation();
 const primaryColor = option.dataset.primary;
 applyColorTheme(primaryColor);
-markSelectedColor(primaryColor);
-// Close modal after selection
-colorPickerModal.style.display = 'none';
-isModalOpen = false;
 });
 });
 
-function lightenColor(hex, percent) {
-hex = hex.replace('#', '');
-const r = parseInt(hex.substr(0, 2), 16);
-const g = parseInt(hex.substr(2, 2), 16);
-const b = parseInt(hex.substr(4, 2), 16);
-const newR = Math.min(255, r + (255 - r) * percent / 100);
-const newG = Math.min(255, g + (255 - g) * percent / 100);
-const newB = Math.min(255, b + (255 - b) * percent / 100);
-return '#' +
-Math.round(newR).toString(16).padStart(2, '0') +
-Math.round(newG).toString(16).padStart(2, '0') +
-Math.round(newB).toString(16).padStart(2, '0');
-}
-
-function isColorDark(hex) {
-hex = hex.replace('#', '');
-const r = parseInt(hex.substr(0, 2), 16);
-const g = parseInt(hex.substr(2, 2), 16);
-const b = parseInt(hex.substr(4, 2), 16);
-const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-return luminance < 0.5;
-}
-
-function detectSystemColorScheme() {
-
-const isChromium = !!window.chrome || /Chrome/.test(navigator.userAgent);
-if (isChromium) {
-
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
-if (prefersDark.matches) {
-return 'dark';
-} else if (prefersLight.matches) {
-return 'light';
-}
-}
-
-return null;
-}
-
-if (!savedPrimary) {
-
-const systemScheme = detectSystemColorScheme();
-if (systemScheme === 'dark') {
-
-applyColorTheme('#000000');
-markSelectedColor('#000000');
-} else if (systemScheme === 'light') {
-// Use a light color by default
-applyColorTheme('#6c5ce7');
-markSelectedColor('#6c5ce7');
-} else {
-
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-if (prefersDarkScheme.matches) {
-applyColorTheme('#000000');
-markSelectedColor('#000000');
-} else {
-applyColorTheme('#6c5ce7');
-markSelectedColor('#6c5ce7');
-}
-}
-}
+initTheme();
 </script>
 </body>
 </html>
-
-
-
-
-
