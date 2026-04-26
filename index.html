@@ -422,6 +422,19 @@ border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease !important;
 .color-picker-modal { bottom: 80px; right: 20px; width: 280px; }
 .color-options { gap: 10px; grid-template-columns: repeat(4,1fr); }
 .color-option { width: 50px; height: 50px; }
+/* 🔧 ФИКС: показываем кнопку языка на мобильных */
+.nav-links .lang-toggle {
+  display: inline-block !important;
+  position: fixed;
+  top: 15px;
+  right: 70px;
+  z-index: 1001;
+  background: rgba(255,255,255,0.25);
+  border: 2px solid rgba(255,255,255,0.8);
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 16px;
+}
 }
 </style>
 </head>
