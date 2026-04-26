@@ -83,7 +83,7 @@ transition: width 0.3s ease;
 }
 .nav-links a:hover::after { width: 100%; }
 
-/* Language toggle - вынесена из nav-links */
+/* Language toggle */
 .lang-toggle {
 background: rgba(255,255,255,0.2);
 border: 1.5px solid rgba(255,255,255,0.6);
@@ -412,30 +412,32 @@ border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease !important;
 
 /* 🔧 Мобильная версия */
 @media (max-width: 768px) {
-.hero h1 { font-size: 2.8rem; }
-.hero p { font-size: 1.2rem; }
-.typing { font-size: 1.3rem; }
-.nav-links { display: none; }
-.section, .download-page { padding: 60px 20px; }
-.section-title h2, .download-header h1 { font-size: 2rem; }
-.download-cards { grid-template-columns: 1fr; }
-.theme-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
-.color-picker-modal { bottom: 80px; right: 20px; width: 280px; }
-.color-options { gap: 10px; grid-template-columns: repeat(4,1fr); }
-.color-option { width: 50px; height: 50px; }
-/* Кнопка языка на мобильных - позиционируется отдельно */
-#langToggle {
-  display: inline-block !important;
-  position: fixed;
-  top: 15px;
-  right: 75px;
-  z-index: 1001;
-  background: rgba(255,255,255,0.25);
-  border: 2px solid rgba(255,255,255,0.8);
-  padding: 4px 12px;
-  font-size: 12px;
-  border-radius: 16px;
-}
+  .hero h1 { font-size: 2.8rem; }
+  .hero p { font-size: 1.2rem; }
+  .typing { font-size: 1.3rem; }
+  .nav-links { display: none; }
+  .section, .download-page { padding: 60px 20px; }
+  .section-title h2, .download-header h1 { font-size: 2rem; }
+  .download-cards { grid-template-columns: 1fr; }
+  .theme-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+  .color-picker-modal { bottom: 80px; right: 20px; width: 280px; }
+  .color-options { gap: 10px; grid-template-columns: repeat(4,1fr); }
+  .color-option { width: 50px; height: 50px; }
+  
+  /* 🔧 Кнопка языка: по центру + сдвиг вправо */
+  #langToggle {
+    display: inline-block !important;
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(calc(-50% + 20px)); /* Центр экрана + 20px вправо */
+    z-index: 1001;
+    background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.8);
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 16px;
+  }
 }
 </style>
 </head>
