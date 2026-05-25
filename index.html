@@ -83,6 +83,1085 @@ transition: width 0.3s ease;
 }
 .nav-links a:hover::after { width: 100%; }
 
+.lang-toggle {
+background: rgba(255,255,255,0.2);
+border: 1.5px solid rgba(255,255,255,0.6);
+color: #fff;
+border-radius: 20px;
+padding: 5px 14px;
+font-size: 13px;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+letter-spacing: 0.5px;
+}
+.lang-toggle:hover {
+background: rgba(255,255,255,0.35);
+transform: scale(1.05);
+}
+
+.main-content { display: none; opacity: 0; transition: opacity 0.5s ease; }
+.main-content.active { display: block; opacity: 1; }
+.hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 0 20px;
+position: relative;
+overflow: hidden;
+}
+.hero-content { max-width: 800px; z-index: 1; padding-top: 80px; }
+.hero h1 {
+font-size: 4.5rem;
+margin-bottom: 20px;
+background: var(--gradient);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+animation: fadeInUp 1s ease;
+}
+.hero p {
+font-size: 1.5rem;
+margin-bottom: 40px;
+color: var(--text-secondary);
+animation: fadeInUp 1s ease 0.2s forwards;
+opacity: 0;
+}
+.typing {
+font-size: 1.8rem;
+margin: 20px 0;
+color: var(--primary);
+font-weight: bold;
+animation: fadeInUp 1s ease 0.4s forwards;
+opacity: 0;
+}
+.typing span {
+border-right: 3px solid var(--primary);
+white-space: nowrap;
+overflow: hidden;
+}
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; margin-bottom: 60px; position: relative; }
+.section-title h2 {
+font-size: 2.5rem;
+color: var(--primary);
+display: inline-block;
+padding-bottom: 10px;
+}
+.section-title h2::after {
+content: '';
+position: absolute;
+bottom: 0; left: 50%;
+transform: translateX(-50%);
+width: 80px; height: 4px;
+background: var(--secondary);
+border-radius: 2px;
+}
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item {
+background: var(--bg-card);
+border-radius: 12px;
+padding: 25px;
+margin-bottom: 20px;
+box-shadow: 0 5px 15px var(--shadow-color);
+transition: all 0.3s ease;
+border-left: 4px solid var(--primary);
+color: var(--text-primary);
+border: 1px solid var(--border-color);
+}
+.faq-item:hover { transform: translateX(10px); box-shadow: 0 8px 25px var(--shadow-color); }
+.faq-question {
+font-size: 1.2rem;
+font-weight: 600;
+color: var(--primary);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.faq-answer { color: var(--text-secondary); line-height: 1.8; }
+.projects-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 40px;
+margin-top: 40px;
+}
+.project-card {
+background: var(--bg-card);
+padding: 40px 30px;
+border-radius: 15px;
+box-shadow: 0 10px 30px var(--shadow-color);
+text-align: center;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+cursor: pointer;
+color: var(--text-primary);
+border: 1px solid var(--border-color);
+}
+.project-card:hover { transform: translateY(-20px) scale(1.05); box-shadow: 0 20px 50px var(--shadow-color); }
+.project-card::before {
+content: '';
+position: absolute;
+top: 0; left: 0;
+width: 100%; height: 5px;
+background: var(--gradient);
+}
+.project-card i {
+font-size: 4rem;
+margin-bottom: 20px;
+color: #ffffff !important;
+-webkit-text-fill-color: #ffffff !important;
+text-shadow: 0 0 20px rgba(255,255,255,0.3);
+transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.project-card:hover i { transform: scale(1.15) rotate(3deg); }
+.project-card h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--text-primary); }
+.project-card p { color: var(--text-secondary); font-size: 1.1rem; }
+.project-card:hover h3, .project-card:hover p { color: var(--primary); }
+.download-page { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+.download-header { text-align: center; margin-bottom: 60px; }
+.download-header h1 { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+.download-cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+gap: 40px;
+margin-bottom: 60px;
+}
+.download-card {
+background: var(--bg-card);
+border-radius: 15px;
+padding: 40px;
+box-shadow: 0 10px 30px var(--shadow-color);
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+color: var(--text-primary);
+border: 1px solid var(--border-color);
+}
+.download-card::before {
+content: '';
+position: absolute;
+top: 0; left: 0;
+width: 100%; height: 5px;
+background: var(--gradient);
+}
+.download-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px var(--shadow-color); }
+.download-card h2 {
+font-size: 1.8rem;
+margin-bottom: 20px;
+color: var(--text-primary);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.download-card p { margin-bottom: 20px; color: var(--text-secondary); line-height: 1.8; }
+.download-link {
+display: inline-block;
+background: var(--gradient);
+color: var(--text-on-primary);
+padding: 15px 40px;
+border-radius: 10px;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.1rem;
+transition: all 0.3s ease;
+box-shadow: 0 5px 15px rgba(108,92,231,0.3);
+}
+.download-link:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(108,92,231,0.4); }
+.download-link i { margin-right: 10px; }
+.faq-section {
+background: var(--bg-secondary);
+padding: 60px 20px;
+border-radius: 15px;
+margin-top: 40px;
+border: 1px solid var(--border-color);
+}
+.faq-section h2 { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 40px; }
+.faq-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 900px;
+margin: 0 auto;
+}
+.faq-item-page {
+background: var(--bg-card);
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0 5px 15px var(--shadow-color);
+transition: all 0.3s ease;
+color: var(--text-primary);
+border: 1px solid var(--border-color);
+}
+.faq-item-page:hover { transform: translateX(10px); box-shadow: 0 8px 20px var(--shadow-color); }
+.faq-item-page h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-primary); }
+.faq-item-page p { color: var(--text-secondary); line-height: 1.7; }
+.faq-item-page code {
+background: rgba(108,92,231,0.15);
+padding: 2px 6px;
+border-radius: 4px;
+color: var(--primary);
+font-family: monospace;
+}
+.faq-item-page a { color: var(--primary); text-decoration: none; }
+.faq-item-page a:hover { text-decoration: underline; }
+
+/* ===== VIDEO PLAYER ===== */
+.video-section {
+  max-width: 900px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px var(--shadow-color);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+.video-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px var(--shadow-color);
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.video-info {
+  text-align: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+.video-info h3 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.video-info p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+footer {
+background: var(--bg-secondary);
+color: var(--text-primary);
+text-align: center;
+padding: 40px 20px;
+border-top: 1px solid var(--border-color);
+}
+.footer-content { max-width: 600px; margin: 0 auto; }
+.footer-content p { margin: 10px 0; color: var(--text-secondary); }
+.copyright { margin-top: 20px; color: var(--text-secondary); font-size: 0.9rem; }
+.scroll-progress {
+position: fixed;
+top: 0; left: 0;
+height: 4px;
+background: var(--gradient);
+width: 0;
+z-index: 9999;
+transition: width 0.1s ease;
+}
+.theme-toggle {
+position: fixed;
+bottom: 30px; right: 30px;
+width: 50px; height: 50px;
+border-radius: 50%;
+background: var(--gradient);
+border: none;
+color: var(--text-on-primary);
+font-size: 1.2rem;
+cursor: pointer;
+box-shadow: 0 5px 15px var(--shadow-color);
+z-index: 1000;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.theme-toggle:hover { transform: scale(1.1) rotate(30deg); }
+.color-picker-modal {
+position: fixed;
+bottom: 90px; right: 30px;
+background: var(--bg-card);
+padding: 20px;
+border-radius: 15px;
+box-shadow: 0 10px 30px var(--shadow-color);
+z-index: 999;
+display: none;
+width: 320px;
+border: 1px solid var(--border-color);
+}
+.color-picker-modal h3 { margin-bottom: 15px; color: var(--text-primary); font-size: 1.2rem; text-align: center; }
+.color-options { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.color-option {
+width: 60px; height: 60px;
+border-radius: 12px;
+cursor: pointer;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+border: 3px solid transparent;
+}
+.color-option:hover { transform: scale(1.15); box-shadow: 0 5px 15px var(--shadow-color); }
+.color-option.selected { border-color: var(--primary); box-shadow: 0 0 15px var(--shadow-color); }
+
+body.black-theme { background: #000000; color: white; }
+body.black-theme * { color: white !important; }
+body.black-theme header { background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%) !important; }
+body.black-theme .hero h1 {
+background: linear-gradient(135deg, white 0%, #a0a0a0 100%) !important;
+-webkit-background-clip: text !important;
+-webkit-text-fill-color: transparent !important;
+background-clip: text !important;
+}
+body.black-theme .faq-item,
+body.black-theme .project-card,
+body.black-theme .download-card,
+body.black-theme .faq-item-page { background: #333333; border-color: #555 !important; }
+body.black-theme footer { background: #111111; }
+body.black-theme .faq-section { background: #222222; }
+body.black-theme .color-picker-modal { background: #222222; }
+
+#backToHomeFromVideo {
+background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%) !important;
+box-shadow: 0 8px 25px rgba(108,92,231,0.5) !important;
+}
+#backToHomeFromVideo:hover {
+transform: translateY(-5px) !important;
+box-shadow: 0 12px 35px rgba(108,92,231,0.6) !important;
+}
+
+*, *::before, *::after {
+transition: background-color 0.4s ease, color 0.4s ease,
+border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease !important;
+}
+.typing span { transition: none !important; }
+
+#githubCard { border-left: 4px solid #333; }
+#githubCard:hover { border-left-color: var(--primary); }
+
+@media (max-width: 768px) {
+.hero h1 { font-size: 2.8rem; }
+.hero p { font-size: 1.2rem; }
+.typing { font-size: 1.3rem; }
+.nav-links { display: none; }
+.section, .download-page { padding: 60px 20px; }
+.section-title h2, .download-header h1 { font-size: 2rem; }
+.download-cards { grid-template-columns: 1fr; }
+.theme-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+.color-picker-modal { bottom: 80px; right: 20px; width: 280px; }
+.color-options { gap: 10px; grid-template-columns: repeat(4,1fr); }
+.color-option { width: 50px; height: 50px; }
+.video-section { padding: 0 15px; margin: 30px auto 40px; }
+.video-container { border-radius: 12px; }
+.video-container iframe { border-radius: 12px; }
+
+#langToggle {
+  display: inline-block !important;
+  position: fixed;
+  top: 15px;
+  right: 75px;
+  z-index: 1001;
+  background: rgba(255,255,255,0.25);
+  border: 2px solid rgba(255,255,255,0.8);
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 16px;
+}
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<button class="theme-toggle" id="themeToggle"><i class="fas fa-palette"></i></button>
+<div class="color-picker-modal" id="colorPickerModal">
+<h3 id="colorPickerTitle">Выберите основной цвет</h3>
+<div class="color-options">
+<div class="color-option" style="background:#6c5ce7;" data-primary="#6c5ce7"></div>
+<div class="color-option" style="background:#00b894;" data-primary="#00b894"></div>
+<div class="color-option" style="background:#fd79a8;" data-primary="#fd79a8"></div>
+<div class="color-option" style="background:#e17055;" data-primary="#e17055"></div>
+<div class="color-option" style="background:#0984e3;" data-primary="#0984e3"></div>
+<div class="color-option" style="background:#fdcb6e;" data-primary="#fdcb6e"></div>
+<div class="color-option" style="background:#55efc4;" data-primary="#55efc4"></div>
+<div class="color-option" style="background:#74b9ff;" data-primary="#74b9ff"></div>
+<div class="color-option" style="background:#a29bfe;" data-primary="#a29bfe"></div>
+<div class="color-option" style="background:#ff7675;" data-primary="#ff7675"></div>
+<div class="color-option" style="background:#ffeaa7;" data-primary="#ffeaa7"></div>
+<div class="color-option" style="background:#000000;" data-primary="#000000"></div>
+</div>
+</div>
+
+<header id="header">
+<nav>
+<div class="logo" id="homeBtn">
+<i class="fas fa-code"></i>
+<span>Timix</span>
+</div>
+<div class="nav-links">
+<a href="#" id="navHome" data-ru="Главная" data-en="Home">Главная</a>
+<a href="#about" data-ru="Обо мне" data-en="About">Обо мне</a>
+<a href="#projects" data-ru="Проекты" data-en="Projects">Проекты</a>
+</div>
+
+<button class="lang-toggle" id="langToggle">EN</button>
+</nav>
+</header>
+
+<!-- HOME PAGE -->
+<div class="main-content active" id="homePage">
+<section class="hero">
+<div class="hero-content">
+<h1 data-aos="fade-up">Timix</h1>
+<p data-aos="fade-up" data-aos-delay="200" id="heroSubtitle">Блогер • Программист</p>
+<div class="typing" data-aos="fade-up" data-aos-delay="400">
+<span id="typingEl">👨‍💻 Python Developer</span>
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="section-title" data-aos="fade-down">
+<h2 id="aboutTitle">Обо мне</h2>
+</div>
+<div class="faq-container">
+<div class="faq-item" data-aos="fade-up">
+<div class="faq-question"><i class="fas fa-user"></i> <span id="q1">Кто ты такой?</span></div>
+<div class="faq-answer" id="a1">Я — Timix, начинающий техноблогер, течтокер. В своих видео я рассказываю про компьютеры, телефоны и другую технику. Так же я являюсь начинающим программистом. Я пока знаю языки Python и HTML, но скоро буду делать свои программы и на других языках.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+<div class="faq-question"><i class="fas fa-birthday-cake"></i> <span id="q2">Сколько тебе лет?</span></div>
+<div class="faq-answer" id="a2">Мне 13 лет. Начал разбираться в компьютерах в 8-9 лет, а год назад заинтересовался разработкой сборок на Windows и программированием.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+<div class="faq-question"><i class="fas fa-video"></i> <span id="q3">Как давно ты ведёшь YouTube канал?</span></div>
+<div class="faq-answer" id="a3">Мой канал существует уже более 3 лет. У меня больше Shorts'ев, но я больше их не выпускаю.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="700">
+<div class="faq-question"><i class="fas fa-tools"></i> <span id="q4">Какие программы ты используешь?</span></div>
+<div class="faq-answer" id="a4">Для программирования: CodePen, PyCharm, Git. Для монтажа видео я пользуюсь CapCut (скоро перейду на DaVinci Resolve), GIMP для работы с изображениями.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="800">
+<div class="faq-question"><i class="fas fa-bullseye"></i> <span id="q5">Какие у тебя цели?</span></div>
+<div class="faq-answer" id="a5">Мои цели — написать твикер и развивать канал.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="900">
+<div class="faq-question"><i class="fas fa-heart"></i> <span id="q6">Почему ты делаешь всё это бесплатно?</span></div>
+<div class="faq-answer" id="a6">Я не хочу, чтобы вы тратили свои деньги на обычную программу. Делаю всё это с любовью чтобы помочь сообществу.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1000">
+<div class="faq-question"><i class="fas fa-users"></i> <span id="q7">Есть ли у тебя команда?</span></div>
+<div class="faq-answer" id="a7">Пока что работаю один, но возможно, скоро начну набор в свою команду.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1100">
+<div class="faq-question"><i class="fas fa-lightbulb"></i> <span id="q8">Откуда берёшь идеи для проектов?</span></div>
+<div class="faq-answer" id="a8">Идеи приходят из личного опыта. Всегда ищу способы сделать жизнь пользователей проще.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1300">
+<div class="faq-question"><i class="fas fa-shield-alt"></i> <span id="q9">Безопасно ли твоё ПО?</span></div>
+<div class="faq-answer" id="a9">Абсолютно безопасно. Все компоненты тщательно проверяются, никакого вредоносного ПО или скрытых функций. Исходники многих проектов доступны на GitHub.</div>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="1400">
+<div class="faq-question"><i class="fas fa-envelope"></i> <span id="q10">Как с тобой связаться?</span></div>
+<div class="faq-answer" id="a10">Лучший способ связи — через предложку. Также можно написать в комментариях к видео или на стриме через чат.</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="projects">
+<div class="section-title" data-aos="fade-down">
+<h2 id="projectsTitle">Мои проекты</h2>
+</div>
+<div class="projects-grid">
+<div class="project-card" data-aos="fade-up" data-aos-delay="100" id="videobloggerCard">
+<i class="fas fa-video"></i>
+<h3 id="blogCardTitle">Блог</h3>
+<p id="blogCardDesc">Снимаю ролики про технику.</p>
+</div>
+<div class="project-card" data-aos="fade-up" data-aos-delay="200" id="githubCard" onclick="window.open('https://github.com/timixgames','_blank')">
+<i class="fab fa-github"></i>
+<h3 id="githubCardTitle">Мой GitHub</h3>
+<p id="githubCardDesc">Исходный код моих проектов, скрипты и открытые репозитории.</p>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="footer-content">
+<p><i class="fas fa-code"></i> Timix 2026</p>
+<p class="copyright" id="footerCopy">Все права защищены</p>
+</div>
+</footer>
+</div>
+
+<!-- BLOG PAGE -->
+<div class="main-content" id="videobloggerPage">
+<section class="download-page">
+<div class="download-header">
+<h1 data-aos="fade-down" id="blogPageTitle">Блог</h1>
+<p data-aos="fade-up" data-aos-delay="100" id="blogPageSubtitle">Мои каналы</p>
+</div>
+<div class="social-section" style="max-width:900px;margin:60px auto 0;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:40px;">
+
+<div data-aos="fade-up" data-aos-delay="100" style="background:linear-gradient(135deg,#ff0000 0%,#cc0000 100%);border-radius:15px;padding:35px 30px;text-align:center;color:white;box-shadow:0 10px 30px rgba(255,0,0,0.3);transition:all 0.3s ease;">
+<div style="font-size:4rem;margin-bottom:20px;"><i class="fab fa-youtube"></i></div>
+<h3 style="font-size:1.6rem;margin-bottom:15px;font-weight:600;" id="ytTitle">YouTube Канал</h3>
+<div style="margin-bottom:15px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;display:inline-block;min-width:120px;">
+<span style="font-size:1.3rem;font-weight:bold;">66</span>
+<p style="font-size:0.9rem;opacity:0.8;margin:5px 0 0;" id="ytSubs">подписчиков</p>
+</div>
+<p style="font-size:1.1rem;opacity:0.9;line-height:1.6;" id="ytDesc">Обзоры на технику и операционные системы</p>
+<a href="https://youtube.com/@timix-w7q" target="_blank" style="display:inline-block;margin-top:20px;background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right:8px;"></i><span id="ytBtnText">Перейти</span>
+</a>
+</div>
+
+<div data-aos="fade-up" data-aos-delay="200" style="background:linear-gradient(135deg,#0088cc 0%,#00bfa5 100%);border-radius:15px;padding:35px 30px;text-align:center;color:white;box-shadow:0 10px 30px rgba(0,136,204,0.3);transition:all 0.3s ease;">
+<div style="font-size:4rem;margin-bottom:20px;"><i class="fab fa-telegram-plane"></i></div>
+<h3 style="font-size:1.6rem;margin-bottom:15px;font-weight:600;" id="tgTitle">Основной Telegram канал</h3>
+<div style="margin-bottom:15px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;display:inline-block;min-width:120px;">
+<span style="font-size:1.3rem;font-weight:bold;">21</span>
+<p style="font-size:0.9rem;opacity:0.8;margin:5px 0 0;" id="tgSubs">подписчик</p>
+</div>
+<p style="font-size:1.1rem;opacity:0.9;line-height:1.6;" id="tgDesc">Общение с подписчиками, ответы на вопросы и обсуждения</p>
+<a href="https://t.me/Timix056" target="_blank" style="display:inline-block;margin-top:20px;background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right:8px;"></i><span id="tgBtnText">Подписаться</span>
+</a>
+</div>
+
+<div data-aos="fade-up" data-aos-delay="300" style="background:linear-gradient(135deg,#000000 0%,#696969 100%);border-radius:15px;padding:35px 30px;text-align:center;color:white;box-shadow:0 10px 30px rgba(0,0,0,0.3);transition:all 0.3s ease;">
+<div style="font-size:4rem;margin-bottom:20px;"><i class="fab fa-tiktok"></i></div>
+<h3 style="font-size:1.6rem;margin-bottom:15px;font-weight:600;">TikTok</h3>
+<div style="margin-bottom:15px;padding:10px;background:rgba(255,255,255,0.2);border-radius:8px;display:inline-block;min-width:120px;">
+<span style="font-size:1.3rem;font-weight:bold;">74</span>
+<p style="font-size:0.9rem;opacity:0.8;margin:5px 0 0;" id="ttSubs">подписчиков</p>
+</div>
+<p style="font-size:1.1rem;opacity:0.9;line-height:1.6;" id="ttDesc">Короткие видео с лайфхаками и интересными фактами</p>
+<a href="https://tiktok.com/@timix056" target="_blank" style="display:inline-block;margin-top:20px;background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right:8px;"></i><span id="ttBtnText">Смотреть</span>
+</a>
+</div>
+
+<div data-aos="fade-up" data-aos-delay="400" style="background:linear-gradient(135deg,#4c75a3 0%,#5d8dc6 100%);border-radius:15px;padding:35px 30px;text-align:center;color:white;box-shadow:0 10px 30px rgba(76,117,163,0.3);transition:all 0.3s ease;">
+<div style="font-size:4rem;margin-bottom:20px;"><i class="fab fa-vk"></i></div>
+<h3 style="font-size:1.6rem;margin-bottom:15px;font-weight:600;" id="vkTitle">ВКонтакте</h3>
+<div style="margin-bottom:15px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;display:inline-block;min-width:120px;">
+<span style="font-size:1.3rem;font-weight:bold;">6</span>
+<p style="font-size:0.9rem;opacity:0.8;margin:5px 0 0;" id="vkSubs">подписчиков</p>
+</div>
+<p style="font-size:1.1rem;opacity:0.9;line-height:1.6;" id="vkDesc">Сюда просто перезаливаю видео с ютуба и иногда посты из Telegram</p>
+<a href="https://vk.com/timix5" target="_blank" style="display:inline-block;margin-top:20px;background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right:8px;"></i><span id="vkBtnText">Вступить</span>
+</a>
+</div>
+
+<div data-aos="fade-up" data-aos-delay="500" style="background:linear-gradient(135deg,#6441a5 0%,#9147ff 100%);border-radius:15px;padding:35px 30px;text-align:center;color:white;box-shadow:0 10px 30px rgba(100,65,165,0.3);transition:all 0.3s ease;">
+<div style="font-size:4rem;margin-bottom:20px;"><i class="fab fa-twitch"></i></div>
+<h3 style="font-size:1.6rem;margin-bottom:15px;font-weight:600;" id="twTitle">Twitch</h3>
+<div style="margin-bottom:15px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;display:inline-block;min-width:120px;">
+<span style="font-size:1.3rem;font-weight:bold;">2</span>
+<p style="font-size:0.9rem;opacity:0.8;margin:5px 0 0;" id="twSubs">фолловера</p>
+</div>
+<p style="font-size:1.1rem;opacity:0.9;line-height:1.6;" id="twDesc">Иногда запускаю стримы и играю на них в разные игры</p>
+<a href="https://twitch.tv/t1m1xgames" target="_blank" style="display:inline-block;margin-top:20px;background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid white;">
+<i class="fas fa-external-link-alt" style="margin-right:8px;"></i><span id="twBtnText">Стать фолловером</span>
+</a>
+</div>
+
+<div data-aos="fade-up" data-aos-delay="600" style="background:linear-gradient(135deg,#ff416c 0%,#ff4b2b 100%);border-radius:15px;padding:35px 30px;text-align:center;color:white;box-shadow:0 10px 30px rgba(255,65,108,0.3);transition:all 0.3s ease;">
+<div style="font-size:4rem;margin-bottom:20px;"><i class="fas fa-headset"></i></div>
+<h3 style="font-size:1.6rem;margin-bottom:15px;font-weight:600;" id="supportTitle">Техподдержка</h3>
+<p style="font-size:1.1rem;opacity:0.9;line-height:1.6;" id="supportDesc">Связь для технических вопросов, сотрудничества и рекламных предложений</p>
+<a href="https://t.me/Timix_support_bot" target="_blank" style="display:inline-block;margin-top:20px;background:rgba(255,255,255,0.2);color:white;padding:12px 30px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid white;">
+<i class="fas fa-comments" style="margin-right:8px;"></i><span id="supportBtnText">Написать</span>
+</a>
+</div>
+
+</div>
+</div>
+
+<!-- VIDEO PLAYER SECTION -->
+<div class="video-section" data-aos="fade-up">
+  <div class="video-info">
+    <h3 id="videoTitle">Моё последнее видео на YouTube</h3>
+  </div>
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/SnBfZ-O-FH0?si=FYtLidTJlaiXJMRz" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:40px;" data-aos="fade-up" data-aos-delay="900">
+<button class="download-link" id="backToHomeFromVideo">
+<i class="fas fa-arrow-left"></i> <span id="backBlogText">Вернуться на главную</span>
+</button>
+</div>
+</section>
+<footer>
+<div class="footer-content">
+<p><i class="fas fa-code"></i> Timix 2026</p>
+<p class="copyright" id="footerCopy2">Все права защищены</p>
+</div>
+</footer>
+</div>
+
+<!-- PROGRAMMER PAGE -->
+<div class="main-content" id="programmerPage">
+<section class="download-page">
+<div class="download-header">
+<h1 data-aos="fade-down" id="progPageTitle">Мои программы</h1>
+</div>
+<div class="download-cards">
+<div class="download-card" data-aos="fade-right">
+<h2><i class="fab fa-python"></i> Find My Windows PC (FMWinPC)</h2>
+<p id="fmwDesc">Telegram бот для управления компьютером.</p>
+<a href="https://github.com/timixgames/Find-My-Windows-PC-FMWinPC-" target="_blank" class="download-link">
+<i class="fas fa-download"></i> <span id="dlBtnText">Скачать с GitHub</span>
+</a>
+</div>
+</div>
+<div class="faq-section" data-aos="fade-up">
+<h2>FAQ</h2>
+<div class="faq-grid">
+<div class="faq-item-page">
+<h3 id="faqProg1Q">Как установить программу?</h3>
+<p id="faqProg1A">
+<strong id="step1h">Шаг 1: Установка Python</strong><br>
+<span id="step1t">Скачайте и установите последнюю версию Python с официального сайта <a href="https://www.python.org" target="_blank">python.org</a>. При установке обязательно поставьте галочку "Add Python to PATH".</span><br><br>
+<strong id="step2h">Шаг 2: Установка библиотек</strong><br>
+<span id="step2t">Откройте командную строку (Win + R → cmd) и выполните:<br>
+<code>pip install psutil mss pillow pyperclip</code></span><br><br>
+<strong id="step3h">Шаг 3: Скачайте NirCmd</strong><br>
+<span id="step3t">Скачайте NirCmd с <a href="https://www.nirsoft.net/utils/nircmd.html" target="_blank">nirsoft.net</a> и скопируйте <code>nircmd.exe</code> в папку с программой.</span><br><br>
+<strong id="step4h">Шаг 4: Настройка бота</strong><br>
+<span id="step4t">Перейдите к <a href="https://t.me/BotFather" target="_blank">@BotFather</a>, создайте бота и вставьте токен в строку <code>BOT_TOKEN = 'YOUR_BOT_API'</code>.</span><br><br>
+<strong id="step5h">Шаг 5: Получите Telegram ID</strong><br>
+<span id="step5t">Перейдите к <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a> и вставьте ID в строку <code>MY_USER_ID = YOUR_USER_ID</code>.</span><br><br>
+<strong id="step6h">Шаг 6: Первый запуск</strong><br>
+<span id="step6t">Запустите бота, выберите язык интерфейса (Русский или English) — готово!</span>
+</p>
+</div>
+<div class="faq-item-page">
+<h3 id="faqProg2Q">Требуется ли активация?</h3>
+<p id="faqProg2A">Нет, программа полностью бесплатна и не требует активации. Все функции доступны сразу после установки.</p>
+</div>
+<div class="faq-item-page">
+<h3 id="faqProg3Q">Какие системные требования?</h3>
+<p id="faqProg3A">Windows 10/11, 2 ГБ ОЗУ, 100 МБ свободного места на диске.</p>
+</div>
+<div class="faq-item-page">
+<h3 id="faqProg4Q">Есть ли обновления?</h3>
+<p id="faqProg4A">Да, программа регулярно обновляется. Проверить наличие обновлений можно в разделе "Помощь" внутри программы.</p>
+</div>
+<div class="faq-item-page">
+<h3 id="faqProg5Q">Какие функции доступны в боте?</h3>
+<p id="faqProg5A">Управление громкостью и яркостью, скриншоты, проверка активности ПК, сетевые подключения, запуск программ, управление питанием (сон, блокировка, перезагрузка, выключение), отслеживание местоположения, поиск ПК по звуку и многое другое.</p>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:40px;" data-aos="fade-up" data-aos-delay="200">
+<button class="download-link" style="background:var(--gradient);border:none;cursor:pointer;" id="backToHomeFromProg">
+<i class="fas fa-arrow-left"></i> <span id="backProgText">Вернуться на главную</span>
+</button>
+</div>
+</section>
+<footer>
+<div class="footer-content">
+<p><i class="fas fa-code"></i> Timix 2026</p>
+<p class="copyright" id="footerCopy3">Все права защищены</p>
+</div>
+</footer>
+</div>
+
+<script>
+/* ===== TRANSLATIONS ===== */
+const translations = {
+ru: {
+colorPickerTitle: 'Выберите основной цвет',
+navHome: 'Главная',
+navAbout: 'Обо мне',
+navProjects: 'Проекты',
+heroSubtitle: 'Блогер • Программист',
+typingTexts: ['👨‍💻 Python Developer','🎥 Техно-блогер','🚀 Создаю полезные инструменты','💡 Делаю технологии проще'],
+aboutTitle: 'Обо мне',
+q1:'Кто ты такой?', a1:'Я — Timix, начинающий техноблогер, течтокер. В своих видео я рассказываю про компьютеры, телефоны и другую технику. Так же я являюсь начинающим программистом. Я пока знаю языки Python и HTML, но скоро буду делать свои программы и на других языках.',
+q2:'Сколько тебе лет?', a2:'Мне 13 лет. Начал разбираться в компьютерах в 8-9 лет, а год назад заинтересовался разработкой сборок на Windows и программированием.',
+q3:'Как давно ты ведёшь YouTube канал?', a3:'Мой канал существует уже более 3 лет. У меня больше Shorts\'ев, но я больше их не выпускаю.',
+q4:'Какие программы ты используешь?', a4:'Для программирования: CodePen, PyCharm, Git. Для монтажа видео я пользуюсь CapCut (скоро перейду на DaVinci Resolve), GIMP для работы с изображениями.',
+q5:'Какие у тебя цели?', a5:'Мои цели — написать твикер и развивать канал.',
+q6:'Почему ты делаешь всё это бесплатно?', a6:'Я не хочу, чтобы вы тратили свои деньги на обычную программу. Делаю всё это с любовью чтобы помочь сообществу.',
+q7:'Есть ли у тебя команда?', a7:'Пока что работаю один, но возможно, скоро начну набор в свою команду.',
+q8:'Откуда берёшь идеи для проектов?', a8:'Идеи приходят из личного опыта. Всегда ищу способы сделать жизнь пользователей проще.',
+q9:'Безопасно ли твоё ПО?', a9:'Абсолютно безопасно. Все компоненты тщательно проверяются, никакого вредоносного ПО или скрытых функций. Исходники многих проектов доступны на GitHub.',
+q10:'Как с тобой связаться?', a10:'Лучший способ связи — через предложку. Также можно написать в комментариях к видео или на стриме через чат.',
+projectsTitle:'Мои проекты',
+blogCardTitle:'Блог', blogCardDesc:'Снимаю ролики про технику.',
+githubCardTitle:'Мой GitHub', githubCardDesc:'Исходный код моих проектов, скрипты и открытые репозитории.',
+footerCopy:'Все права защищены',
+blogPageTitle:'Блог', blogPageSubtitle:'Мои каналы',
+ytTitle:'YouTube Канал', ytSubs:'подписчиков', ytDesc:'Обзоры на технику и операционные системы', ytBtnText:'Перейти',
+tgTitle:'Основной Telegram канал', tgSubs:'подписчик', tgDesc:'Общение с подписчиками, ответы на вопросы и обсуждения', tgBtnText:'Подписаться',
+ttSubs:'подписчиков', ttDesc:'Короткие видео с лайфхаками и интересными фактами', ttBtnText:'Смотреть',
+vkTitle:'ВКонтакте', vkSubs:'подписчиков', vkDesc:'Сюда просто перезаливаю видео с ютуба и иногда посты из Telegram', vkBtnText:'Вступить',
+twTitle:'Twitch', twSubs:'фолловера', twDesc:'Иногда запускаю стримы и играю на них в разные игры', twBtnText:'Стать фолловером',
+supportTitle:'Техподдержка', supportDesc:'Связь для технических вопросов, сотрудничества и рекламных предложений', supportBtnText:'Написать',
+backBlogText:'Вернуться на главную', backProgText:'Вернуться на главную',
+progPageTitle:'Мои программы',
+fmwDesc:'Telegram бот для управления компьютером.',
+dlBtnText:'Скачать с GitHub',
+videoTitle: 'Последнее видео',
+videoDesc: 'Смотри мой новый обзор на YouTube!',
+faqProg1Q:'Как установить программу?',
+step1h:'Шаг 1: Установка Python', step1t:'Скачайте и установите последнюю версию Python с официального сайта <a href="https://www.python.org" target="_blank">python.org</a>. При установке обязательно поставьте галочку "Add Python to PATH".',
+step2h:'Шаг 2: Установка библиотек', step2t:'Откройте командную строку (Win + R → cmd) и выполните:<br><code>pip install psutil mss pillow pyperclip</code>',
+step3h:'Шаг 3: Скачайте NirCmd', step3t:'Скачайте NirCmd с <a href="https://www.nirsoft.net/utils/nircmd.html" target="_blank">nirsoft.net</a> и скопируйте <code>nircmd.exe</code> в папку с программой.',
+step4h:'Шаг 4: Настройка бота', step4t:'Перейдите к <a href="https://t.me/BotFather" target="_blank">@BotFather</a>, создайте бота и вставьте токен в строку <code>BOT_TOKEN = \'YOUR_BOT_API\'</code>.',
+step5h:'Шаг 5: Получите Telegram ID', step5t:'Перейдите к <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a> и вставьте ID в строку <code>MY_USER_ID = YOUR_USER_ID</code>.',
+step6h:'Шаг 6: Первый запуск', step6t:'Запустите бота, выберите язык интерфейса (Русский или English) — готово!',
+faqProg2Q:'Требуется ли активация?', faqProg2A:'Нет, программа полностью бесплатна и не требует активации. Все функции доступны сразу после установки.',
+faqProg3Q:'Какие системные требования?', faqProg3A:'Windows 10/11, 2 ГБ ОЗУ, 100 МБ свободного места на диске.',
+faqProg4Q:'Есть ли обновления?', faqProg4A:'Да, программа регулярно обновляется. Проверить наличие обновлений можно в разделе "Помощь" внутри программы.',
+faqProg5Q:'Какие функции доступны в боте?', faqProg5A:'Управление громкостью и яркостью, скриншоты, проверка активности ПК, сетевые подключения, запуск программ, управление питанием (сон, блокировка, перезагрузка, выключение), отслеживание местоположения, поиск ПК по звуку и многое другое.',
+langBtn:'EN'
+},
+en: {
+colorPickerTitle: 'Choose accent color',
+navHome: 'Home',
+navAbout: 'About',
+navProjects: 'Projects',
+heroSubtitle: 'Blogger • Developer',
+typingTexts: ['👨‍💻 Python Developer','🎥 Tech Blogger','🚀 Building useful tools','💡 Making tech simpler'],
+aboutTitle: 'About Me',
+q1:'Who are you?', a1:'I\'m Timix, an aspiring tech blogger and TikToker. In my videos I cover computers, phones, and other gadgets. I\'m also a beginner developer — currently working with Python and HTML, with more languages coming soon.',
+q2:'How old are you?', a2:'I\'m 13. I started getting into computers around age 8–9, and a year ago I got interested in custom Windows builds and programming.',
+q3:'How long have you had a YouTube channel?', a3:'My channel has been running for over 3 years. I used to publish mostly Shorts, but I no longer make them.',
+q4:'What tools do you use?', a4:'For development: CodePen, PyCharm, Git. For video editing I use CapCut (switching to DaVinci Resolve soon), and GIMP for images.',
+q5:'What are your goals?', a5:'My goals are to write a tweaker app and grow my channel.',
+q6:'Why do you do this for free?', a6:'I don\'t want people to spend money on something that should be free. I make everything with care to help the community.',
+q7:'Do you have a team?', a7:'I work solo for now, but I might start recruiting team members soon.',
+q8:'Where do you get project ideas?', a8:'Ideas come from personal experience. I\'m always looking for ways to make users\' lives simpler.',
+q9:'Is your software safe?', a9:'Absolutely. Every component is thoroughly checked — no malware, no hidden functions. Source code for many projects is available on GitHub.',
+q10:'How can I contact you?', a10:'Best way is through the suggestion box. You can also leave a comment on a video or chat during a stream.',
+projectsTitle:'My Projects',
+blogCardTitle:'Blog', blogCardDesc:'I make tech review videos.',
+githubCardTitle:'My GitHub', githubCardDesc:'Source code for my projects, scripts, and open repositories.',
+footerCopy:'All rights reserved',
+blogPageTitle:'Blog', blogPageSubtitle:'My channels',
+ytTitle:'YouTube Channel', ytSubs:'subscribers', ytDesc:'Reviews on tech and operating systems', ytBtnText:'Visit',
+tgTitle:'Main Telegram Channel', tgSubs:'subscriber', tgDesc:'Community chat, Q&A, and discussions', tgBtnText:'Subscribe',
+ttSubs:'followers', ttDesc:'Short videos with tips, tricks, and fun facts', ttBtnText:'Watch',
+vkTitle:'VKontakte', vkSubs:'subscribers', vkDesc:'I repost YouTube videos and occasional Telegram posts here', vkBtnText:'Join',
+twTitle:'Twitch', twSubs:'followers', twDesc:'I occasionally stream and play various games', twBtnText:'Follow',
+supportTitle:'Support', supportDesc:'For technical questions, collaborations, and business inquiries', supportBtnText:'Write',
+backBlogText:'Back to Home', backProgText:'Back to Home',
+progPageTitle:'My Programs',
+fmwDesc:'A Telegram bot for remote PC control.',
+dlBtnText:'Download from GitHub',
+videoTitle: 'Latest Video',
+videoDesc: 'Watch my new review on YouTube!',
+faqProg1Q:'How do I install the program?',
+step1h:'Step 1: Install Python', step1t:'Download and install the latest Python from <a href="https://www.python.org" target="_blank">python.org</a>. Be sure to check "Add Python to PATH" during installation.',
+step2h:'Step 2: Install libraries', step2t:'Open Command Prompt (Win + R → cmd) and run:<br><code>pip install psutil mss pillow pyperclip</code>',
+step3h:'Step 3: Download NirCmd', step3t:'Get NirCmd from <a href="https://www.nirsoft.net/utils/nircmd.html" target="_blank">nirsoft.net</a> and copy <code>nircmd.exe</code> into the program folder.',
+step4h:'Step 4: Set up the bot', step4t:'Go to <a href="https://t.me/BotFather" target="_blank">@BotFather</a>, create a bot and paste the token into <code>BOT_TOKEN = \'YOUR_BOT_API\'</code>.',
+step5h:'Step 5: Get your Telegram ID', step5t:'Go to <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a> and paste your ID into <code>MY_USER_ID = YOUR_USER_ID</code>.',
+step6h:'Step 6: First launch', step6t:'Start the bot, choose your interface language (Russian or English) — you\'re ready!',
+faqProg2Q:'Does it require activation?', faqProg2A:'No, the program is completely free and requires no activation. All features are available immediately after setup.',
+faqProg3Q:'What are the system requirements?', faqProg3A:'Windows 10/11, 2 GB RAM, 100 MB of free disk space.',
+faqProg4Q:'Are there updates?', faqProg4A:'Yes, the program is updated regularly. You can check for updates in the "Help" section inside the program.',
+faqProg5Q:'What can the bot do?', faqProg5A:'Control volume and screen brightness, take screenshots, check PC activity, view network connections, launch programs, manage power (sleep, lock, restart, shutdown), track PC location, find your PC by sound, and more.',
+langBtn:'RU'
+}
+};
+
+let currentLang = localStorage.getItem('lang') || 'ru';
+
+function applyLang(lang) {
+const t = translations[lang];
+document.documentElement.lang = lang;
+document.getElementById('colorPickerTitle').textContent = t.colorPickerTitle;
+document.getElementById('navHome').textContent = t.navHome;
+const navLinks = document.querySelectorAll('.nav-links a');
+if (navLinks[1]) navLinks[1].textContent = t.navAbout;
+if (navLinks[2]) navLinks[2].textContent = t.navProjects;
+document.getElementById('langToggle').textContent = t.langBtn;
+document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
+document.getElementById('aboutTitle').textContent = t.aboutTitle;
+for (let i = 1; i <= 10; i++) {
+  const qEl = document.getElementById('q'+i);
+  const aEl = document.getElementById('a'+i);
+  if (qEl) qEl.textContent = t['q'+i];
+  if (aEl) aEl.textContent = t['a'+i];
+}
+document.getElementById('projectsTitle').textContent = t.projectsTitle;
+document.getElementById('blogCardTitle').textContent = t.blogCardTitle;
+document.getElementById('blogCardDesc').textContent = t.blogCardDesc;
+document.getElementById('githubCardTitle').textContent = t.githubCardTitle;
+document.getElementById('githubCardDesc').textContent = t.githubCardDesc;
+['footerCopy','footerCopy2','footerCopy3'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.textContent = t.footerCopy;
+});
+document.getElementById('blogPageTitle').textContent = t.blogPageTitle;
+document.getElementById('blogPageSubtitle').textContent = t.blogPageSubtitle;
+document.getElementById('ytTitle').textContent = t.ytTitle;
+document.getElementById('ytSubs').textContent = t.ytSubs;
+document.getElementById('ytDesc').textContent = t.ytDesc;
+document.getElementById('ytBtnText').textContent = t.ytBtnText;
+document.getElementById('tgTitle').textContent = t.tgTitle;
+document.getElementById('tgSubs').textContent = t.tgSubs;
+document.getElementById('tgDesc').textContent = t.tgDesc;
+document.getElementById('tgBtnText').textContent = t.tgBtnText;
+document.getElementById('ttSubs').textContent = t.ttSubs;
+document.getElementById('ttDesc').textContent = t.ttDesc;
+document.getElementById('ttBtnText').textContent = t.ttBtnText;
+document.getElementById('vkTitle').textContent = t.vkTitle;
+document.getElementById('vkSubs').textContent = t.vkSubs;
+document.getElementById('vkDesc').textContent = t.vkDesc;
+document.getElementById('vkBtnText').textContent = t.vkBtnText;
+document.getElementById('twTitle').textContent = t.twTitle;
+document.getElementById('twSubs').textContent = t.twSubs;
+document.getElementById('twDesc').textContent = t.twDesc;
+document.getElementById('twBtnText').textContent = t.twBtnText;
+document.getElementById('supportTitle').textContent = t.supportTitle;
+document.getElementById('supportDesc').textContent = t.supportDesc;
+document.getElementById('supportBtnText').textContent = t.supportBtnText;
+document.getElementById('backBlogText').textContent = t.backBlogText;
+document.getElementById('backProgText').textContent = t.backProgText;
+document.getElementById('progPageTitle').textContent = t.progPageTitle;
+document.getElementById('fmwDesc').textContent = t.fmwDesc;
+document.getElementById('dlBtnText').textContent = t.dlBtnText;
+document.getElementById('videoTitle').textContent = t.videoTitle;
+document.getElementById('videoDesc').textContent = t.videoDesc;
+document.getElementById('faqProg1Q').textContent = t.faqProg1Q;
+document.getElementById('step1h').textContent = t.step1h;
+document.getElementById('step1t').innerHTML = t.step1t;
+document.getElementById('step2h').textContent = t.step2h;
+document.getElementById('step2t').innerHTML = t.step2t;
+document.getElementById('step3h').textContent = t.step3h;
+document.getElementById('step3t').innerHTML = t.step3t;
+document.getElementById('step4h').textContent = t.step4h;
+document.getElementById('step4t').innerHTML = t.step4t;
+document.getElementById('step5h').textContent = t.step5h;
+document.getElementById('step5t').innerHTML = t.step5t;
+document.getElementById('step6h').textContent = t.step6h;
+document.getElementById('step6t').innerHTML = t.step6t;
+document.getElementById('faqProg2Q').textContent = t.faqProg2Q;
+document.getElementById('faqProg2A').textContent = t.faqProg2A;
+document.getElementById('faqProg3Q').textContent = t.faqProg3Q;
+document.getElementById('faqProg3A').textContent = t.faqProg3A;
+document.getElementById('faqProg4Q').textContent = t.faqProg4Q;
+document.getElementById('faqProg4A').textContent = t.faqProg4A;
+document.getElementById('faqProg5Q').textContent = t.faqProg5Q;
+document.getElementById('faqProg5A').textContent = t.faqProg5A;
+typingTexts = t.typingTexts;
+}
+
+document.getElementById('langToggle').addEventListener('click', () => {
+  currentLang = currentLang === 'ru' ? 'en' : 'ru';
+  localStorage.setItem('lang', currentLang);
+  applyLang(currentLang);
+});
+
+/* ===== COLOR THEME ===== */
+function getColorLuminance(hex) {
+hex = hex.replace('#','');
+const r=parseInt(hex.substr(0,2),16)/255, g=parseInt(hex.substr(2,2),16)/255, b=parseInt(hex.substr(4,2),16)/255;
+return 0.2126*r+0.7152*g+0.0722*b;
+}
+function adjustColor(hex,percent) {
+hex=hex.replace('#','');
+const r=parseInt(hex.substr(0,2),16), g=parseInt(hex.substr(2,2),16), b=parseInt(hex.substr(4,2),16);
+const nr=Math.max(0,Math.min(255,r+(percent*r/100))), ng=Math.max(0,Math.min(255,g+(percent*g/100))), nb=Math.max(0,Math.min(255,b+(percent*b/100)));
+return '#'+Math.round(nr).toString(16).padStart(2,'0')+Math.round(ng).toString(16).padStart(2,'0')+Math.round(nb).toString(16).padStart(2,'0');
+}
+function generateThemePalette(primaryColor) {
+const lum=getColorLuminance(primaryColor);
+let ap,bgP,bgS,bgC;
+if(lum>0.6){ap=adjustColor(primaryColor,-15);bgP=adjustColor(primaryColor,-85);bgS=adjustColor(primaryColor,-78);bgC=adjustColor(primaryColor,-70);}
+else if(lum>0.3){ap=primaryColor;bgP=adjustColor(primaryColor,-75);bgS=adjustColor(primaryColor,-68);bgC=adjustColor(primaryColor,-60);}
+else{ap=adjustColor(primaryColor,10);bgP=adjustColor(primaryColor,20);bgS=adjustColor(primaryColor,28);bgC=adjustColor(primaryColor,38);}
+const sec=adjustColor(ap,25);
+return {primary:ap,secondary:sec,gradient:`linear-gradient(135deg,${ap} 0%,${sec} 100%)`,bgPrimary:bgP,bgSecondary:bgS,bgCard:bgC,textPrimary:'#ffffff',textSecondary:'#d5d5e5',shadowColor:'rgba(0,0,0,0.4)',borderColor:'rgba(255,255,255,0.12)'};
+}
+function applyColorTheme(primaryColor) {
+const p=generateThemePalette(primaryColor);
+const r=document.documentElement;
+r.style.setProperty('--primary',p.primary);
+r.style.setProperty('--secondary',p.secondary);
+r.style.setProperty('--gradient',p.gradient);
+r.style.setProperty('--bg-primary',p.bgPrimary);
+r.style.setProperty('--bg-secondary',p.bgSecondary);
+r.style.setProperty('--bg-card',p.bgCard);
+r.style.setProperty('--text-primary',p.textPrimary);
+r.style.setProperty('--text-secondary',p.textSecondary);
+r.style.setProperty('--shadow-color',p.shadowColor);
+r.style.setProperty('--border-color',p.borderColor);
+if(primaryColor==='#000000') document.body.classList.add('black-theme');
+else document.body.classList.remove('black-theme');
+localStorage.setItem('themePrimary',primaryColor);
+markSelectedColor(primaryColor);
+document.getElementById('colorPickerModal').style.display='none';
+isModalOpen=false;
+}
+function markSelectedColor(c) {
+document.querySelectorAll('.color-option').forEach(o=>{
+  o.classList.remove('selected');
+  if(o.dataset.primary.toLowerCase()===c.toLowerCase()) o.classList.add('selected');
+});
+}
+function initTheme() {
+const saved=localStorage.getItem('themePrimary');
+if(saved) applyColorTheme(saved);
+else {
+  const dark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyColorTheme(dark?'#000000':'#6c5ce7');
+}
+}
+
+/* ===== PAGES ===== */
+const homePage=document.getElementById('homePage');
+const videobloggerPage=document.getElementById('videobloggerPage');
+const programmerPage=document.getElementById('programmerPage');
+function showPage(page){
+[homePage,videobloggerPage,programmerPage].forEach(p=>p.classList.remove('active'));
+page.classList.add('active');
+window.scrollTo(0,0);
+}
+document.getElementById('videobloggerCard').addEventListener('click',()=>showPage(videobloggerPage));
+document.getElementById('githubCard').addEventListener('click',e=>{e.stopPropagation();window.open('https://github.com/timixgames','_blank');});
+document.getElementById('backToHomeFromVideo').addEventListener('click',()=>showPage(homePage));
+document.getElementById('backToHomeFromProg').addEventListener('click',()=>showPage(homePage));
+document.getElementById('navHome').addEventListener('click',e=>{e.preventDefault();showPage(homePage);});
+document.getElementById('homeBtn').addEventListener('click',()=>showPage(homePage));
+
+/* ===== SCROLL ===== */
+window.addEventListener('scroll',()=>{
+const h=document.getElementById('header');
+window.scrollY>100?h.classList.add('scrolled'):h.classList.remove('scrolled');
+const st=document.documentElement.scrollTop, sh=document.documentElement.scrollHeight, ch=document.documentElement.clientHeight;
+document.getElementById('scrollProgress').style.width=((st/(sh-ch))*100)+'%';
+});
+
+/* ===== SMOOTH LINKS ===== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener('click',function(e){
+  e.preventDefault();
+  const t=document.querySelector(this.getAttribute('href'));
+  if(t) window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});
+});
+});
+
+/* ===== TYPING ===== */
+let typingTexts=translations[currentLang].typingTexts;
+let textIndex=0,charIndex=0,isDeleting=false,typingSpeed=100;
+const typingEl=document.getElementById('typingEl');
+function type(){
+const cur=typingTexts[textIndex];
+typingEl.textContent=isDeleting?cur.substring(0,charIndex-1):cur.substring(0,charIndex+1);
+if(!isDeleting&&charIndex===cur.length){isDeleting=true;setTimeout(type,2000);}
+else if(isDeleting&&charIndex===0){isDeleting=false;textIndex=(textIndex+1)%typingTexts.length;setTimeout(type,500);}
+else{charIndex+=isDeleting?-1:1;setTimeout(type,isDeleting?typingSpeed*0.5:typingSpeed);}
+}
+setTimeout(type,4000);
+
+/* ===== THEME TOGGLE ===== */
+let isModalOpen=false;
+document.getElementById('themeToggle').addEventListener('click',e=>{
+e.stopPropagation();
+const m=document.getElementById('colorPickerModal');
+isModalOpen=!isModalOpen;
+m.style.display=isModalOpen?'block':'none';
+});
+document.addEventListener('click',e=>{
+const m=document.getElementById('colorPickerModal');
+if(!m.contains(e.target)&&e.target!==document.getElementById('themeToggle')){m.style.display='none';isModalOpen=false;}
+});
+document.getElementById('colorPickerModal').addEventListener('click',e=>e.stopPropagation());
+document.querySelectorAll('.color-option').forEach(o=>{
+o.addEventListener('click',e=>{e.stopPropagation();applyColorTheme(o.dataset.primary);});
+});
+
+/* ===== AOS ===== */
+AOS.init({duration:800,easing:'ease-in-out',once:true,disable:'mobile'});
+
+/* ===== INIT ===== */
+initTheme();
+applyLang(currentLang);
+</script>
+</body>
+</html>color: var(--text-on-primary);
+padding: 20px 0;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+box-shadow: 0 2px 15px var(--shadow-color);
+backdrop-filter: blur(10px);
+transition: all 0.3s ease;
+}
+header.scrolled { padding: 15px 0; }
+nav {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+}
+.logo {
+font-size: 28px;
+font-weight: bold;
+display: flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+color: var(--text-on-primary);
+}
+.logo i { font-size: 32px; }
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a {
+color: var(--text-on-primary);
+text-decoration: none;
+font-weight: 500;
+font-size: 16px;
+transition: all 0.3s ease;
+position: relative;
+padding: 5px 0;
+}
+.nav-links a::after {
+content: '';
+position: absolute;
+bottom: 0; left: 0;
+width: 0; height: 2px;
+background: var(--text-on-primary);
+transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
 /* Language toggle - вынесена из nav-links */
 .lang-toggle {
 background: rgba(255,255,255,0.2);
